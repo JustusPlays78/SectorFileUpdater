@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>Sectorfile Updater</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="index.css" />
+    <script defer src="render.js"></script>
   </head>
   <body>
+    <button id="startDownload" class"button is-primary">Start Download</button>
+    <button id="stopDownload" class"button is-warning">Stop Download</button>
+    <button id="startUnzip" class"button is-primary">Start Unzip</button>
+    <button id="stopUnzip" class"button is-warning">Stop Unzip</button>
+    <button id="selectVersionBtn" class"button is-warning">Version</button>
+    <button id="selectPathBtn" class"button is-warning">Path</button>
     <h1>Hello World!</h1>
     <p>Welcome to your Electron application.</p>
   </body>

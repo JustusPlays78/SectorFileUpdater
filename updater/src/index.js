@@ -1,7 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, nativeTheme } = require('electron');
 const path = require('path');
-const { download } = require("electron-dl");
-let window;
+Menu.setApplicationMenu(false);
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
 if (require('electron-squirrel-startup')) {
@@ -17,13 +17,9 @@ const createWindow = () => {
             nodeIntegration: true,
         },
     });
-
-    // and load the index.html of the app.
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
-
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools();
 };
+
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
