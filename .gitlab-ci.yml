@@ -1,38 +1,32 @@
-name: Build/release
-
-on: push
-
+version: 2.1
 jobs:
-  release:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:11
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v1
+      - checkout
+      - run:
+          name: Update NPM
+          command: "sudo npm install -g npm"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Install dpkg and fakeroot
+          command: |
+            sudo apt-get update -y
+            sudo apt-get install -y dpkg fakeroot
 
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Generate Builds
+          command: npm run make
 
-      - name: Installing dependencies
-        run: yarn
-
-      - name: Tsc
-        run: npx tsc
-
-      - name: Build/release Electron app
-        uses: ./.github/actions/release
-        with:
-          skip_build: false
-          # GitHub token, automatically provided to the action
-          # (No need to define this secret in the repo settings)
-          github_token: ${{ secrets.DEPLOY_TOKEN }}
-
-          # If the commit is tagged with a version (e.g. "v1.0.0"),
-          # release the app after building
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      - store_artifacts:
+          path: ~/repo/out/make
