@@ -45,6 +45,7 @@
     }
   },
   "dependencies": {
+    "@octokit/core": "^4.0.5",
     "decompress-zip": "^0.3.3",
     "electron-dl": "^3.3.1",
     "electron-squirrel-startup": "^1.0.0"

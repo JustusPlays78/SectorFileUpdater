@@ -6,6 +6,7 @@ const stopUnzip = document.querySelector('stopUnzip');
 const selectVersionBtn = document.querySelector('selectVersion');
 const selectPathBtn = document.querySelector('selectPathBtn');
 
+var directoryPath = "C:";
 
 const { remote } = require('electron');
 const { Menu } = remote;
@@ -59,8 +60,8 @@ async function downloadVersion(e) {
 
 
 ipcRenderer.send("download", {
-    url: "URL is here",
-    properties: { directory: "Directory is here" }
+    url: "https://dms.pabr.de/s/SpBiQYADTNak7R5/download",
+    properties: { directory: directoryPath }
 });
 
 const { ipcRenderer } = require("electron");
@@ -74,3 +75,18 @@ ipcRenderer.on("download progress", (event, progress) => {
     const progressInPercentages = progress * 100; // With decimal point and a bunch of numbers
     const cleanProgressInPercentages = Math.floor(progress * 100); // Without decimal point
 });
+
+
+// Select Folder
+document.getElementById('dirs').addEventListener('click', (evt) => {
+    evt.preventDefault()
+    window.postMessage({
+        type: 'select-dirs',
+    })
+})
+
+
+
+
+
+// Get releases from Gitlab

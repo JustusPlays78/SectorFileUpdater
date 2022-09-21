@@ -1,6 +1,6 @@
-const { app, BrowserWindow, Menu, ipcMain, nativeTheme } = require('electron');
+const { app, BrowserWindow, Menu, dialog, ipcMain, nativeTheme } = require('electron');
 const path = require('path');
-Menu.setApplicationMenu(false);
+//Menu.setApplicationMenu(false);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -14,9 +14,11 @@ const createWindow = () => {
         width: 800,
         height: 600,
         webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
         },
     });
+    mainWindow.loadFile(path.join(__dirname, 'index.html'));
 };
 
 
@@ -46,7 +48,12 @@ app.on('activate', () => {
 
 
 
-
+ipcMain.on('select-dirs', async(event, arg) => {
+    const result = await dialog.showOpenDialog(mainWindow, {
+        properties: ['openDirectory']
+    })
+    console.log('directories selected', result.filePaths)
+})
 
 
 
