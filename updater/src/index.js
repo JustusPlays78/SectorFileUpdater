@@ -1,6 +1,9 @@
 const { app, BrowserWindow, Menu, dialog, ipcMain, nativeTheme } = require('electron');
+const { download } = require("electron-dl");
 const path = require('path');
 //Menu.setApplicationMenu(false);
+var fs = require('fs');
+let window;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -16,8 +19,10 @@ const createWindow = () => {
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
+            contextIsolation: true,
         },
     });
+
     mainWindow.loadFile(path.join(__dirname, 'index.html'));
 };
 
@@ -46,6 +51,14 @@ app.on('activate', () => {
 });
 
 
+// Write to a file
+ipcMain.on("saveFile", (event, location, txtVal) => {
+    fs.writeFile(location, txtVal.toString(), (err) => {
+        if (!err) { console.log("File.written"); } else {
+            console.log(err);
+        }
+    });
+});
 
 
 ipcMain.on('select-dirs', async(event, arg) => {
@@ -55,6 +68,13 @@ ipcMain.on('select-dirs', async(event, arg) => {
     console.log('directories selected', result.filePaths)
 })
 
+
+// Download a file
+ipcMain.on("download", (event, url, properties) => {
+    properties.onProgress = status => window.webContents.send("download progress", status);
+    download(BrowserWindow.getFocusedWindow(), url, properties)
+        .then(dl => window.webContents.send("download complete", dl.getSavePath()));
+});
 
 
 // In this file you can include the rest of your app's specific main process

@@ -11,6 +11,7 @@
     <script defer src="render.js"></script>
   </head>
   <body>
+    <button id="writeFile" class"button is-primary">Write File</button>
     <button id="startDownload" class"button is-primary">Start Download</button>
     <button id="stopDownload" class"button is-warning">Stop Download</button>
     <button id="startUnzip" class"button is-primary">Start Unzip</button>
@@ -19,7 +20,13 @@
     <button id="selectPathBtn" class"button is-warning">Path</button>
     <h1>Hello World!</h1>
     <p>Welcome to your Electron application.</p>
-    
+    <p>Input Text</p>
+    <input type="text" id="txtBox" name="name" size="80">
+    <p>Input URL</p>
+    <input type="text" id="urlBox" name="name" size="80">
+    <p>Input Directory</p>
+    <input type="text" id="dirBox" name="name" size="80">
+    <progress id="file" max="100" value="70"></progress>
     <input type="file" id="dirs" webkitdirectory directory/>
   </body>
 </html>
