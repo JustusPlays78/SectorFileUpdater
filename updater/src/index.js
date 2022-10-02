@@ -11,18 +11,29 @@ if (require('electron-squirrel-startup')) {
     app.quit();
 }
 
+
+async function handleFileOpen() {
+    const { canceled, filePaths } = await dialog.showOpenDialog()
+    if (canceled) {
+        return
+    } else {
+        return filePaths[0]
+    }
+}
+app.whenReady(() => {
+    ipcMain.handle('dialog:openFile', handleFileOpen)
+    createWindow()
+})
+
 const createWindow = () => {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-            nodeIntegration: true,
-            contextIsolation: true,
+            preload: path.join(__dirname, 'preload.js')
         },
     });
-
     mainWindow.loadFile(path.join(__dirname, 'index.html'));
 };
 
@@ -70,9 +81,9 @@ ipcMain.on('select-dirs', async(event, arg) => {
 
 
 // Download a file
-ipcMain.on("download", (event, url, properties) => {
-    properties.onProgress = status => window.webContents.send("download progress", status);
-    download(BrowserWindow.getFocusedWindow(), url, properties)
+ipcMain.on("download", async(event, url) => {
+    //properties.onProgress = status => window.webContents.send("download progress", status);
+    download(BrowserWindow.getFocusedWindow(), url)
         .then(dl => window.webContents.send("download complete", dl.getSavePath()));
 });
 

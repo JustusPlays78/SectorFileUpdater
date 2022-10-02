@@ -10,8 +10,12 @@ const writeFile = document.querySelector('writeFile');
 const { remote, ipcRenderer } = require('electron');
 const { writeFile } = require('fs');
 
+document.getElementById('btn').addEventListener('click', () => {
+    const filePath = window.electronAPI.openFile()
+    document.getElementById('filePath').innerText = filePath
+});
 
-const { ipcRenderer } = require("electron");
+
 ipcRenderer.on("download complete", (event, file) => {
     console.log(file); // Full file path
 });
@@ -28,4 +32,11 @@ document.getElementById('dirs').addEventListener('click', (evt) => {
     window.postMessage({
         type: 'select-dirs',
     })
+});
+
+
+
+document.getElementById('openButton').addEventListener('click', () => {
+    console.log("Test");
+    ipcRenderer.send('openFile', {})
 });

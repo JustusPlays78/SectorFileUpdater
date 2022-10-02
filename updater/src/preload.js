@@ -1,4 +1,10 @@
-const { ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
+
+contextBridge.exposeInMainWorld('electronAPI', {
+    openFile: () => ipcRenderer.invoke('dialog:openFile')
+});
+
+
 
 
 // Change me for file save
@@ -28,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+/*
 
 // Change me for select directory
 process.once('loaded', () => {
@@ -37,4 +43,4 @@ process.once('loaded', () => {
             ipcRenderer.send('select-dirs')
         }
     });
-});
+});*/
