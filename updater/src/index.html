@@ -3,32 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <title>Sectorfile Updater</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="index.css" />
-    <script src="./renderer.js"></script>
   </head>
   <body>
-    <!--<button id="writeFile" class"button is-primary">Write File</button>
-    <button id="startDownload" class"button is-primary">Start Download</button>
-    <button id="stopDownload" class"button is-warning">Stop Download</button>
-    <button id="startUnzip" class"button is-primary">Start Unzip</button>
-    <button id="stopUnzip" class"button is-warning">Stop Unzip</button>
-    <button id="selectVersionBtn" class"button is-warning">Version</button>
-    <button id="selectPathBtn" class"button is-warning">Path</button> -->
     <button id="download" class"button is-primary">Download</button>
-    <button id="openButton">Open</button>
-    <!--<h1>Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-    <p>Input Text</p>
-    <input type="text" id="txtBox" name="name" size="80">
+    <button id="dirs">Open</button>
+    
     <p>Input URL</p>
     <input type="text" id="urlBox" name="name" size="80">
     <p>Input Directory</p>
     <input type="text" id="dirBox" name="name" size="80">
-    <progress id="file" max="100" value="70"></progress>-->
+    <progress id="progressbar" max="100" value="70"></progress>
     <input type="file" id="dirs" webkitdirectory directory/>
-    <button type="button" id="btn">Open a File</button>
-    File path: <strong id="filePath"></strong>
+    <p id="ouput">Output Test here</p>
     <script src="./renderer.js"></script>
   </body>
 </html>

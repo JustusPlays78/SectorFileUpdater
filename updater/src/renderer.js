@@ -1,42 +1,38 @@
-// Buttons
-const startDownload = document.querySelector('startDownload');
-const stopDownload = document.querySelector('stopDownload');
-const startUnzip = document.querySelector('startUnzip');
-const stopUnzip = document.querySelector('stopUnzip');
-const selectVersionBtn = document.querySelector('selectVersion');
-const selectPathBtn = document.querySelector('selectPathBtn');
-const writeFile = document.querySelector('writeFile');
-
-const { remote, ipcRenderer } = require('electron');
-const { writeFile } = require('fs');
-
-document.getElementById('btn').addEventListener('click', () => {
-    const filePath = window.electronAPI.openFile()
-    document.getElementById('filePath').innerText = filePath
-});
-
+const { ipcRenderer, dialog } = require('electron');
 
 ipcRenderer.on("download complete", (event, file) => {
     console.log(file); // Full file path
+    // Datei entpacken
 });
+
 ipcRenderer.on("download progress", (event, progress) => {
-    console.log(progress); // Progress in fraction, between 0 and 1
-    const progressInPercentages = progress * 100; // With decimal point and a bunch of numbers
-    const cleanProgressInPercentages = Math.floor(progress * 100); // Without decimal point
+    const cleanProgressInPercentages = Math.floor(progress.percent * 100); // Without decimal point
+    document.getElementById('progressbar').value = cleanProgressInPercentages;
+});
+
+let donwloadbtn = document.getElementById('download');
+donwloadbtn.addEventListener('click', (e) => {
+    let directoryPath = document.getElementById('dirBox');
+    let urlPath = document.getElementById('urlBox');
+    ipcRenderer.send("download", {
+        url: urlPath.value,
+        properties: { directory: directoryPath.value }
+    });
 });
 
 
-// Select Folder
-document.getElementById('dirs').addEventListener('click', (evt) => {
-    evt.preventDefault()
-    window.postMessage({
-        type: 'select-dirs',
-    })
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('dirs').addEventListener('click', function() {
+        openFile();
+    });
 });
 
+function openFile() {
+    ipcRenderer.send('openFolder', () => {
+        console.log("Event sent.");
+    });
+}
 
-
-document.getElementById('openButton').addEventListener('click', () => {
-    console.log("Test");
-    ipcRenderer.send('openFile', {})
-});
+ipcRenderer.on('folderData', (event, data) => {
+    console.log(data)
+})

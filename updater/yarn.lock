@@ -1213,10 +1213,10 @@
     "lodash.template" "^4.2.2"
     "temp" "^0.9.0"
 
-"electron@20.1.4":
-  "integrity" "sha512-7ov5kgSQi2JewV5SrVfjGasUvyScjuJrrDCW0rYxtP2SMe3JjoP4rsOOnh3ps2P/Nrdlbv+0ygiK0zp4ARCZ+A=="
-  "resolved" "https://registry.npmjs.org/electron/-/electron-20.1.4.tgz"
-  "version" "20.1.4"
+"electron@^21.0.1":
+  "integrity" "sha512-jLVSLakd0fO2GPnW4xXQrI93R464jeFb2ISngqRP3wpwH96XqeANkuAYLAr9TVhfQMCIWnuPROBZ+NU7nuk0WA=="
+  "resolved" "https://registry.npmjs.org/electron/-/electron-21.0.1.tgz"
+  "version" "21.0.1"
   dependencies:
     "@electron/get" "^1.14.1"
     "@types/node" "^16.11.26"
