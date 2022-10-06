@@ -1,4 +1,5 @@
 const { ipcRenderer, dialog } = require('electron');
+var DecompressZip = require('decompress-zip');
 
 ipcRenderer.on("download complete", (event, file) => {
     console.log(file); // Full file path
@@ -10,8 +11,8 @@ ipcRenderer.on("download progress", (event, progress) => {
     document.getElementById('progressbar').value = cleanProgressInPercentages;
 });
 
-let donwloadbtn = document.getElementById('download');
-donwloadbtn.addEventListener('click', (e) => {
+let donwloadBtn = document.getElementById('download');
+donwloadBtn.addEventListener('click', (e) => {
     let directoryPath = document.getElementById('dirBox');
     let urlPath = document.getElementById('urlBox');
     ipcRenderer.send("download", {
@@ -20,19 +21,20 @@ donwloadbtn.addEventListener('click', (e) => {
     });
 });
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('dirs').addEventListener('click', function() {
-        openFile();
-    });
+let directoryBtn = document.getElementById('dirs');
+directoryBtn.addEventListener('click', (e) => {
+    window.postMessage({
+        type: 'select-dirs'
+    })
 });
 
-function openFile() {
-    ipcRenderer.send('openFolder', () => {
-        console.log("Event sent.");
+let extractBtn = document.getElementById('extract');
+extractBtn.addEventListener('click', (e) => {
+    let directoryPath = document.getElementById('dirBox');
+    let urlPath = document.getElementById('urlBox');
+    ipcRenderer.send("extract", {
+        url: urlPath.value,
+        properties: { directory: directoryPath.value }
     });
-}
-
-ipcRenderer.on('folderData', (event, data) => {
-    console.log(data)
-})
+    console.log("Töfte");
+});

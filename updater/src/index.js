@@ -3,12 +3,30 @@ const { download } = require("electron-dl");
 const path = require('path');
 //Menu.setApplicationMenu(false); // Top Bar removal
 var fs = require('fs');
+const yaml = require('js-yaml');
+var DecompressZip = require('decompress-zip');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
 if (require('electron-squirrel-startup')) {
     app.quit();
 }
+
+var filepath;
+let data = {
+    cid: {
+        save: true,
+        id: 0
+    },
+    password: {
+        save: true,
+        pass: "NaN"
+    },
+    customUrl: "",
+    currentInstalledAirac: 0
+};
+
+
 
 const createWindow = () => {
     // Create the browser window.
@@ -25,13 +43,33 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, 'index.html'));
     mainWindow.webContents.openDevTools();
 
+    // Read system yaml
+    try {
+        let fileContents = fs.readFileSync('sectorfileUpdater.yaml', 'utf8');
+        filepath = yaml.load(fileContents).folderPath;
+    } catch (e) {
+
+    }
+    // Read config yaml
+    try {
+        let fileContents = fs.readFileSync(filepath + 'sectorfileUpdater.yaml', 'utf8');
+        data = yaml.load(fileContents);
+
+        console.log(data);
+        console.log(data.cid.id);
+    } catch (e) {
+        console.log(e);
+        ipcRenderer.send("savefile", {});
+    }
+
     // Select Directory
     ipcMain.on('select-dirs', async(event, arg) => {
-        const result = await dialog.showOpenDialog(mainWindow, {
+        filepath = await dialog.showOpenDialog(mainWindow, {
             properties: ['openDirectory']
         })
-        console.log('directories selected', result.filePaths)
-    })
+        console.log('directories selected', filepath.filePaths)
+            // Save directory to file
+    });
 
     // Download a file
     ipcMain.on("download", (event, info) => {
@@ -42,7 +80,31 @@ const createWindow = () => {
     });
 
 
+    // Write to a file
+    ipcMain.on("saveFile", () => {
+        let yamlStr = yaml.dump(data);
+        fs.writeFileSync(filepath + 'sectorfileUpdater.yaml', yamlStr, 'utf8');
+    });
 
+    // Unzip content
+    ipcMain.on("extract", (event, directory) => {
+        console.log(directory.directoryPath);
+        var unzipper = new DecompressZip("F:\\Desktop.zip");
+        console.log("Töfte querdrad");
+        unzipper.extract({
+            path: "F:\\test\\" // directory.directoryPath
+        });
+        console.log("Töfte cubique");
+        // Notify "progress" of the decompressed files
+        unzipper.on('progress', function(fileIndex, fileCount) {
+            console.log('Extracted file ' + (fileIndex + 1) + ' of ' + fileCount);
+        });
+        // Notify when everything is extracted
+        unzipper.on('extract', function(log) {
+            console.log('Finished extracting', log);
+        });
+        console.log("Töfte donna");
+    });
 };
 
 
@@ -59,6 +121,8 @@ app.on('ready', createWindow);
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
+    let yamlStr = yaml.dump(data);
+    fs.writeFileSync('data-out.yaml', yamlStr, 'utf8');
     if (process.platform !== 'darwin') {
         app.quit();
     }
@@ -70,13 +134,4 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
-});
-
-// Write to a file
-ipcMain.on("saveFile", (event, location, txtVal) => {
-    fs.writeFile(location, txtVal.toString(), (err) => {
-        if (!err) { console.log("File.written"); } else {
-            console.log(err);
-        }
-    });
 });
