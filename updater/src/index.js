@@ -22,7 +22,6 @@ let data = {
         save: true,
         pass: "NaN"
     },
-    customUrl: "",
     currentInstalledAirac: 0
 };
 
@@ -42,25 +41,25 @@ const createWindow = () => {
     });
     mainWindow.loadFile(path.join(__dirname, 'index.html'));
     mainWindow.webContents.openDevTools();
+    /*
+        // Read system yaml
+        try {
+            let fileContents = fs.readFileSync('sectorfileUpdater.yaml', 'utf8');
+            filepath = yaml.load(fileContents).folderPath;
+        } catch (e) {
 
-    // Read system yaml
-    try {
-        let fileContents = fs.readFileSync('sectorfileUpdater.yaml', 'utf8');
-        filepath = yaml.load(fileContents).folderPath;
-    } catch (e) {
+        }
+        // Read config yaml
+        try {
+            let fileContents = fs.readFileSync(filepath + 'sectorfileUpdater.yaml', 'utf8');
+            data = yaml.load(fileContents);
 
-    }
-    // Read config yaml
-    try {
-        let fileContents = fs.readFileSync(filepath + 'sectorfileUpdater.yaml', 'utf8');
-        data = yaml.load(fileContents);
-
-        console.log(data);
-        console.log(data.cid.id);
-    } catch (e) {
-        console.log(e);
-        ipcRenderer.send("savefile", {});
-    }
+            console.log(data);
+            console.log(data.cid.id);
+        } catch (e) {
+            console.log(e);
+            ipcRenderer.send("savefile", {});
+        }*/
 
     // Select Directory
     ipcMain.on('select-dirs', async(event, arg) => {
@@ -68,7 +67,8 @@ const createWindow = () => {
             properties: ['openDirectory']
         })
         console.log('directories selected', filepath.filePaths)
-            // Save directory to file
+        mainWindow.webContents.send("filepath", filepath.filePaths);
+        // Save directory to file
     });
 
     // Download a file
@@ -87,14 +87,12 @@ const createWindow = () => {
     });
 
     // Unzip content
-    ipcMain.on("extract", (event, directory) => {
-        console.log(directory.directoryPath);
+    ipcMain.on("extract", () => {
+        //console.log(directory.directoryPath);
         var unzipper = new DecompressZip("F:\\Desktop.zip");
-        console.log("Töfte querdrad");
         unzipper.extract({
             path: "F:\\test\\" // directory.directoryPath
         });
-        console.log("Töfte cubique");
         // Notify "progress" of the decompressed files
         unzipper.on('progress', function(fileIndex, fileCount) {
             console.log('Extracted file ' + (fileIndex + 1) + ' of ' + fileCount);
@@ -103,7 +101,6 @@ const createWindow = () => {
         unzipper.on('extract', function(log) {
             console.log('Finished extracting', log);
         });
-        console.log("Töfte donna");
     });
 };
 

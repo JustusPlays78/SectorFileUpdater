@@ -28,13 +28,16 @@ directoryBtn.addEventListener('click', (e) => {
     })
 });
 
+ipcRenderer.on("filepath", (event, file) => {
+    document.getElementById('dirBox').innerText = file;
+});
+
 let extractBtn = document.getElementById('extract');
-extractBtn.addEventListener('click', (e) => {
+extractBtn.addEventListener('click', () => {
     let directoryPath = document.getElementById('dirBox');
     let urlPath = document.getElementById('urlBox');
     ipcRenderer.send("extract", {
         url: urlPath.value,
         properties: { directory: directoryPath.value }
     });
-    console.log("Töfte");
 });
