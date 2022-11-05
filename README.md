@@ -6,12 +6,12 @@ Dieses kleine Tool soll GNG Sector Müll beheben. Leider beschäftigt sich jeder
 * Select ES Folder
 * Version herausfinden / eingeben
 * Updates prüfen (file from Server mit Update Möglichkeiten) bspw (vonVersion-nachVersion):
-  * 2200-2201
-  * 2200-2202
-  * 2200-2203
-  * 2200-2204
-  * 2200-2205
-  * 2200-2206
+  * 2207-2201
+  * 2207-2202
+  * 2207-2203
+  * 2207-2204
+  * 2207-2205
+  * 2207-2206
 * Update herunterladen und enpacken
   * Hierbei werden neue und modifizierte Dateien verändert. (Erkannt wird das vorab mit einem Server script, welches die Fullpackes vergleicht und mittels git vergleicht. Einschränkung hier --diff-filter=ACRTUXBD)
   * Inline, wie bei Git ist hier nicht möglich, da nicht git vorrausgesetzt werden kann auf dem Zielcomputer
