@@ -5,6 +5,9 @@ const path = require('path');
 var fs = require('fs');
 const yaml = require('js-yaml');
 var DecompressZip = require('decompress-zip');
+const { Http2ServerRequest } = require('http2');
+const superagent = require('superagent').agent();
+const http = require('node:http');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -75,8 +78,23 @@ const createWindow = () => {
     ipcMain.on("download", (event, info) => {
         // https://dms.pabr.de/s/SpBiQYADTNak7R5/download
         info.properties.onProgress = status => mainWindow.webContents.send("download progress", status);
-        download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
-            .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
+        // http.request
+        let file = superagent.get('https://files.aero-nav.com/EDGG/Full_Package_20221104183433-221101-3.zip')
+            .set('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko/20100101 Firefox/104.0')
+            .set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8')
+            .set('Accept-Language', 'en-US,en;q=0.5')
+            .set('Accept-Encoding', 'gzip, deflate, br')
+            .set('DNT', '1')
+            .set('Connection', 'keep-alive')
+            .set('Referer', 'http://files.aero-nav.com/')
+            .set('Upgrade-Insecure-Requests', '1')
+            .set('Sec-Fetch-Dest', 'document')
+            .set('Sec-Fetch-Mode', 'navigate')
+            .set('Sec-Fetch-Site', 'cross-site')
+            .set('Sec-Fetch-User', '?1');
+        // Working Download
+        // download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
+        //     .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
     });
 
 
