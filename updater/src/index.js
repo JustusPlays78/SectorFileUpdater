@@ -8,6 +8,7 @@ var DecompressZip = require('decompress-zip');
 const { Http2ServerRequest } = require('http2');
 const superagent = require('superagent').agent();
 const http = require('node:http');
+const { options } = require('superagent');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -93,8 +94,8 @@ const createWindow = () => {
             .set('Sec-Fetch-Site', 'cross-site')
             .set('Sec-Fetch-User', '?1');
         // Working Download
-        // download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
-        //     .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
+        download(BrowserWindow.getFocusedWindow(), info.url, info.properties)
+            .then(dl => mainWindow.webContents.send("download complete", dl.getSavePath()));
     });
 
 

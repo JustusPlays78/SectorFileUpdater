@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AeroNav Association - AIRAC Downloads</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" 			href="https://www.aero-nav.com/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" 	href="https://www.aero-nav.com/favicon.ico" type="image/x-icon" />
+
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta charset="UTF-8">
+
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+
+		<link href="https://www.aero-nav.com/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://www.aero-nav.com/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="https://www.aero-nav.com/css/navbar.css" rel="stylesheet">
+
+		<style type="text/css">
+			ul.nav li.dropdown:hover > ul.dropdown-menu {
+		    	display: block;
+			}
+			ul.nav li.dropdown:hover > div.dropdown-menu {
+		    	display: block;
+			}
+			.table-hover > tbody > tr:hover > td,
+			.table-hover > tbody > tr:hover > th {
+			  background-color: #D9EDF7;
+			}
+            #footer {
+                height: 30px;
+                opacity:0.8;
+                filter:alpha(opacity=80); /* For IE8 and earlier */
+            }
+            #footer p {
+                margin: 5px 0;
+            }
+		</style>
+
+		<script type="text/javascript">
+		$(window).resize(function () {
+			$('.body').css('padding-top', parseInt($('.main-navbar').css("height"))+10);
+		});
+
+		$(window).load(function () {
+			$('.body').css('padding-top', parseInt($('.main-navbar').css("height"))+10);
+		});
+		jQuery(document).ready(function($) {
+		  $(".clickableRow").click(function() {
+		  	  if($(this).attr('target')!=null) {
+		  	  	window.open($(this).attr('href'), $(this).attr('target'));
+			  } else {
+		        window.document.location = $(this).attr("href");
+			  }
+		  });
+		});
+		</script>
+
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<!-- Wrap all page content here -->
+		<div id="wrap" style="padding-top: 10; padding-bottom: 10;">
+			<!-- Fixed navbar -->
+			<div id="main-navbar" class="navbar navbar-inverse navbar-fixed-top main-navbar" role="navigation">
+				<div class="container">
+					<div class="nav">
+						<a class="navbar-brand disabled" href="https://files.aero-nav.com/"  target="_self" style="font-size: 18px;">FILES</a>
+						<ul id="navigation_left" class="nav navbar-nav">
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size: 18px;">AeroNav's Global Nav Generator <b class="caret"></b></a>
+								<ul class="dropdown-menu scroll-menu">
+																		<li class="dropdown-header">Powered by</li>
+									<li><a href="https://www.aero-nav.com/" target="_blank">AeroNav Association</a></li>
+									<li class="dropdown-header">Sponsored by</li>
+									<li><a href="https://www.aerosoft.com/" target="_blank">Aerosoft NavData Pro</a></li>
+								</ul>
+							</li>
+						</ul>
+											</div>
+				</div>
+			</div><!--/.nav-collapse -->
+			<!-- Begin page content -->
+			<div id="body" class="container">
+				<div class="container-header">
+					<div class="row">
+						<div class="col-md-3 header-left" style="padding-top: 25px;">
+							<img style="max-width:600px; max-height:80px;" src="https://www.aero-nav.com/images/ana_small.png" />
+						</div>
+					</div>
+				</div>
+				<div class='page-header'><h1 style="float:left;">vACC <small>Download Pages</small></h1></div>
+						<p class="text-right clickableRow" href="https://www.aerosoft.com/" target="_blank" style="float:right; cursor: pointer;"><small><i>
+						NavData powered by&nbsp;<br />
+						Aerosoft NavDataPro&nbsp;</i></small><br />
+						<img style="max-height: 120px; max-width: 120px;" src="https://www.aero-nav.com/images/aerosoft2.jpg" />
+						</p><table class="table table-striped table-hover" style="cursor: pointer;"><tr height="60px" class="clickableRow" href="/ADRIA">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>ADRIA</b></td>
+						<td style="vertical-align:middle;">VATSIM Adria</td></tr><tr height="60px" class="clickableRow" href="/AFRC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>AFRC</b></td>
+						<td style="vertical-align:middle;">VATSSA Africa Control Centre</td></tr><tr height="60px" class="clickableRow" href="/AFRX">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>AFRX</b></td>
+						<td style="vertical-align:middle;">Africa UIR/FSS Control Stations</td></tr><tr height="60px" class="clickableRow" href="/CARI">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://uploads.jeeveegee.nl/FSS.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>CARI</b></td>
+						<td style="vertical-align:middle;">Caribbean Control</td></tr><tr height="60px" class="clickableRow" href="/CZEG">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/ovMnE1C.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>CZEG</b></td>
+						<td style="vertical-align:middle;">Edmonton FIR</td></tr><tr height="60px" class="clickableRow" href="/CZQQ">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>CZQQ</b></td>
+						<td style="vertical-align:middle;">Moncton Gander FIR</td></tr><tr height="60px" class="clickableRow" href="/CZUL">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/3zw9Unn.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>CZUL</b></td>
+						<td style="vertical-align:middle;">FIR de Montréal</td></tr><tr height="60px" class="clickableRow" href="/CZVR">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>CZVR</b></td>
+						<td style="vertical-align:middle;">Vancouver FIR</td></tr><tr height="60px" class="clickableRow" href="/CZWG">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/bDGZY7U.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>CZWG</b></td>
+						<td style="vertical-align:middle;">Winnipeg FIR</td></tr><tr height="60px" class="clickableRow" href="/CZYZ">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://sfo3.digitaloceanspaces.com/torontofir/branding/logo_high_light.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>CZYZ</b></td>
+						<td style="vertical-align:middle;">Toronto FIR</td></tr><tr height="60px" class="clickableRow" href="/DGAC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>DGAC</b></td>
+						<td style="vertical-align:middle;">VATSSA Accra</td></tr><tr height="60px" class="clickableRow" href="/DNKK">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>DNKK</b></td>
+						<td style="vertical-align:middle;">VATSSA Kano</td></tr><tr height="60px" class="clickableRow" href="/DTTC">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>DTTC</b></td>
+						<td style="vertical-align:middle;">Tunis</td></tr><tr height="60px" class="clickableRow" href="/EBBU">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://beluxvacc.org/wp-content/themes/belux_2020/assets/img/logo.svg" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>EBBU</b></td>
+						<td style="vertical-align:middle;">Belux vACC</td></tr><tr height="60px" class="clickableRow" href="/EDXX">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatsim-germany.org/images/vacc_logo.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>EDXX</b></td>
+						<td style="vertical-align:middle;">VATSIM Germany</td></tr><tr height="60px" class="clickableRow" href="/EETT">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>EETT</b></td>
+						<td style="vertical-align:middle;">VACC Estonia</td></tr><tr height="60px" class="clickableRow" href="/EHAA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://cdn.discordapp.com/attachments/700312914665537537/703700792388878396/DV-Logo1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>EHAA</b></td>
+						<td style="vertical-align:middle;">Dutch VACC</td></tr><tr height="60px" class="clickableRow" href="/EPWW">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/QUxQYXh.png?2" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>EPWW</b></td>
+						<td style="vertical-align:middle;">Polish VACC</td></tr><tr height="60px" class="clickableRow" href="/EURO">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vacc-euc.org/img/logo.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>EURO</b></td>
+						<td style="vertical-align:middle;">EuroCenter vACC</td></tr><tr height="60px" class="clickableRow" href="/EVRR">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>EVRR</b></td>
+						<td style="vertical-align:middle;">vACC Latvia</td></tr><tr height="60px" class="clickableRow" href="/EXCXO">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>EXCXO</b></td>
+						<td style="vertical-align:middle;">Shanwick & Gander Oceanic</td></tr><tr height="60px" class="clickableRow" href="/FAXX">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FAXX</b></td>
+						<td style="vertical-align:middle;">VATSSA South Africa</td></tr><tr height="60px" class="clickableRow" href="/FBGR">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FBGR</b></td>
+						<td style="vertical-align:middle;">VATSSA Gaborone</td></tr><tr height="60px" class="clickableRow" href="/FCCC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FCCC</b></td>
+						<td style="vertical-align:middle;">VATSSA Brazzaville</td></tr><tr height="60px" class="clickableRow" href="/FIMM">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FIMM</b></td>
+						<td style="vertical-align:middle;">VATSSA Mauritius</td></tr><tr height="60px" class="clickableRow" href="/FLFI">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FLFI</b></td>
+						<td style="vertical-align:middle;">VATSSA Lusaka</td></tr><tr height="60px" class="clickableRow" href="/FMMM">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FMMM</b></td>
+						<td style="vertical-align:middle;">VATSSA Antananarivo</td></tr><tr height="60px" class="clickableRow" href="/FNAN">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FNAN</b></td>
+						<td style="vertical-align:middle;">VATSSA Luanda</td></tr><tr height="60px" class="clickableRow" href="/FQBE">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FQBE</b></td>
+						<td style="vertical-align:middle;">VATSSA Beira</td></tr><tr height="60px" class="clickableRow" href="/FSSS">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FSSS</b></td>
+						<td style="vertical-align:middle;">VATSSA Seychelles</td></tr><tr height="60px" class="clickableRow" href="/FTTT">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>FTTT</b></td>
+						<td style="vertical-align:middle;">N Djamena</td></tr><tr height="60px" class="clickableRow" href="/FVHF">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FVHF</b></td>
+						<td style="vertical-align:middle;">VATSSA Harare</td></tr><tr height="60px" class="clickableRow" href="/FWLL">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FWLL</b></td>
+						<td style="vertical-align:middle;">VATSSA Lilongwe</td></tr><tr height="60px" class="clickableRow" href="/FYWH">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FYWH</b></td>
+						<td style="vertical-align:middle;">VATSSA Windhoek</td></tr><tr height="60px" class="clickableRow" href="/FZZA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>FZZA</b></td>
+						<td style="vertical-align:middle;">VATSSA Kinshasa</td></tr><tr height="60px" class="clickableRow" href="/GMMM">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://media.discordapp.net/attachments/954511260337193051/989861389533323314/unknown.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>GMMM</b></td>
+						<td style="vertical-align:middle;">Morocco vACC</td></tr><tr height="60px" class="clickableRow" href="/GOOO">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>GOOO</b></td>
+						<td style="vertical-align:middle;">VATSSA Dakar</td></tr><tr height="60px" class="clickableRow" href="/GOOOO">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>GOOOO</b></td>
+						<td style="vertical-align:middle;">VATSSA Dakar Oceanic</td></tr><tr height="60px" class="clickableRow" href="/GULF">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/NXHa5cX.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>GULF</b></td>
+						<td style="vertical-align:middle;">Gulf FSS Control Stations</td></tr><tr height="60px" class="clickableRow" href="/GVSC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>GVSC</b></td>
+						<td style="vertical-align:middle;">VATSSA Sal</td></tr><tr height="60px" class="clickableRow" href="/HAAA">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>HAAA</b></td>
+						<td style="vertical-align:middle;">North East Africa vACC - Addis Ababa</td></tr><tr height="60px" class="clickableRow" href="/HECC">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>HECC</b></td>
+						<td style="vertical-align:middle;">Egypt vACC</td></tr><tr height="60px" class="clickableRow" href="/HKNA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>HKNA</b></td>
+						<td style="vertical-align:middle;">VATSSA Nairobi</td></tr><tr height="60px" class="clickableRow" href="/HSSS">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>HSSS</b></td>
+						<td style="vertical-align:middle;">North East Africa vACC - Khartoum</td></tr><tr height="60px" class="clickableRow" href="/HTDC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>HTDC</b></td>
+						<td style="vertical-align:middle;">VATSSA Dar es Salaam</td></tr><tr height="60px" class="clickableRow" href="/HUEC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatssa.com/logo/VATSSA_ICON_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>HUEC</b></td>
+						<td style="vertical-align:middle;">VATSSA Entebbe</td></tr><tr height="60px" class="clickableRow" href="/LBSR">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LBSR</b></td>
+						<td style="vertical-align:middle;">vACC Bulgaria</td></tr><tr height="60px" class="clickableRow" href="/LCCC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://forum.hvacc.org/uploads/monthly_2019_02/hvacc-logo-1-1.png.8ecd658f966d7ab047b8c305c623ece1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LCCC</b></td>
+						<td style="vertical-align:middle;">vACC Cyprus</td></tr><tr height="60px" class="clickableRow" href="/LEXX">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatsimspain.es/img/VATSPA_LOGO.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LEXX</b></td>
+						<td style="vertical-align:middle;">vACC Spain</td></tr><tr height="60px" class="clickableRow" href="/LFXX">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LFXX</b></td>
+						<td style="vertical-align:middle;">French vACC</td></tr><tr height="60px" class="clickableRow" href="/LGGG">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://forum.hvacc.org/uploads/monthly_2019_02/hvacc-logo-1-1.png.8ecd658f966d7ab047b8c305c623ece1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LGGG</b></td>
+						<td style="vertical-align:middle;">Hellenic vACC</td></tr><tr height="60px" class="clickableRow" href="/LHCC">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LHCC</b></td>
+						<td style="vertical-align:middle;">vACC Hungary</td></tr><tr height="60px" class="clickableRow" href="/LIXX">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LIXX</b></td>
+						<td style="vertical-align:middle;">vACC Italy</td></tr><tr height="60px" class="clickableRow" href="/LKAA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://forum.vacc-cz.org/styles/FLATBOOTS/theme/images/logo.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LKAA</b></td>
+						<td style="vertical-align:middle;">Praha</td></tr><tr height="60px" class="clickableRow" href="/LLLL">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LLLL</b></td>
+						<td style="vertical-align:middle;">VATSIM ISRAEL Division</td></tr><tr height="60px" class="clickableRow" href="/LOVV">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://www.vacc-austria.org/design/img/site-logo.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LOVV</b></td>
+						<td style="vertical-align:middle;">Vacc Austria</td></tr><tr height="60px" class="clickableRow" href="/LPPC">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LPPC</b></td>
+						<td style="vertical-align:middle;">Portugal vACC</td></tr><tr height="60px" class="clickableRow" href="/LPPO">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LPPO</b></td>
+						<td style="vertical-align:middle;">Portugal VACC</td></tr><tr height="60px" class="clickableRow" href="/LRBB">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://rovacc.ro/wp-content/uploads/2016/05/rovacc_logo_black_dai_media.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LRBB</b></td>
+						<td style="vertical-align:middle;">VATSIM ROMANIA</td></tr><tr height="60px" class="clickableRow" href="/LSAS">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://www.vacc.ch/images/vaccswiss-logo-small.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LSAS</b></td>
+						<td style="vertical-align:middle;">vACC Switzerland</td></tr><tr height="60px" class="clickableRow" href="/LTXX">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/DwzPiRq.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>LTXX</b></td>
+						<td style="vertical-align:middle;">Turkish vACC</td></tr><tr height="60px" class="clickableRow" href="/LZBB">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>LZBB</b></td>
+						<td style="vertical-align:middle;">Vacc Slovakia</td></tr><tr height="60px" class="clickableRow" href="/MDCS">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://uploads.jeeveegee.nl/Mid_Carib_Logo_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>MDCS</b></td>
+						<td style="vertical-align:middle;">Santo Domingo FIR</td></tr><tr height="60px" class="clickableRow" href="/MKJK">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>MKJK</b></td>
+						<td style="vertical-align:middle;">Kingston FIR</td></tr><tr height="60px" class="clickableRow" href="/MYNA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://uploads.jeeveegee.nl/Nassau_Logo_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>MYNA</b></td>
+						<td style="vertical-align:middle;">Nassau FIR</td></tr><tr height="60px" class="clickableRow" href="/OBBB">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/dAiN57Q.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>OBBB</b></td>
+						<td style="vertical-align:middle;">Arabian vACC - Bahrain</td></tr><tr height="60px" class="clickableRow" href="/OEJD">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>OEJD</b></td>
+						<td style="vertical-align:middle;">vACC Saudi Arabia</td></tr><tr height="60px" class="clickableRow" href="/OIIX">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>OIIX</b></td>
+						<td style="vertical-align:middle;">vACC Iran</td></tr><tr height="60px" class="clickableRow" href="/OJAC">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>OJAC</b></td>
+						<td style="vertical-align:middle;">Jordan vACC</td></tr><tr height="60px" class="clickableRow" href="/OKAC">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/GbV4lQ5.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>OKAC</b></td>
+						<td style="vertical-align:middle;">Kuwait vACC</td></tr><tr height="60px" class="clickableRow" href="/OLBB">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>OLBB</b></td>
+						<td style="vertical-align:middle;">Lebanon vACC</td></tr><tr height="60px" class="clickableRow" href="/OMAE">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/dAiN57Q.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>OMAE</b></td>
+						<td style="vertical-align:middle;">Arabian vACC - U.A.E</td></tr><tr height="60px" class="clickableRow" href="/OOMM">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/dAiN57Q.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>OOMM</b></td>
+						<td style="vertical-align:middle;">Arabian vACC - Oman</td></tr><tr height="60px" class="clickableRow" href="/OPXX">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/idYPTyd.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>OPXX</b></td>
+						<td style="vertical-align:middle;">vACC Pakistan</td></tr><tr height="60px" class="clickableRow" href="/ORBB">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://i.imgur.com/L36NTZx.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>ORBB</b></td>
+						<td style="vertical-align:middle;">Iraq vACC</td></tr><tr height="60px" class="clickableRow" href="/SBXX">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SBXX</b></td>
+						<td style="vertical-align:middle;">VATSIM Brasil</td></tr><tr height="60px" class="clickableRow" href="/SCA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://dev.vatsca.org/profile/hosted/Positive.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>SCA</b></td>
+						<td style="vertical-align:middle;">VATSIM Scandinavia</td></tr><tr height="60px" class="clickableRow" href="/SEFG">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SEFG</b></td>
+						<td style="vertical-align:middle;">VATSIM Venezuela</td></tr><tr height="60px" class="clickableRow" href="/SMPM">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SMPM</b></td>
+						<td style="vertical-align:middle;">Paramaribo</td></tr><tr height="60px" class="clickableRow" href="/SOOO">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SOOO</b></td>
+						<td style="vertical-align:middle;">Cayenne</td></tr><tr height="60px" class="clickableRow" href="/SPIM">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SPIM</b></td>
+						<td style="vertical-align:middle;">Lima</td></tr><tr height="60px" class="clickableRow" href="/SRM">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SRM</b></td>
+						<td style="vertical-align:middle;">Sri Lanka & Maldives vACC</td></tr><tr height="60px" class="clickableRow" href="/SYGC">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>SYGC</b></td>
+						<td style="vertical-align:middle;">Georgetown</td></tr><tr height="60px" class="clickableRow" href="/TJZS">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://sanjuancerap.net/wp-content/uploads/2022/05/TEXT_BLACK-1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>TJZS</b></td>
+						<td style="vertical-align:middle;">San Juan CERAP</td></tr><tr height="60px" class="clickableRow" href="/TNCF">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://uploads.jeeveegee.nl/Curacao_Logo_White_Tagline_2000px.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>TNCF</b></td>
+						<td style="vertical-align:middle;">Curacao FIR</td></tr><tr height="60px" class="clickableRow" href="/TTZP">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>TTZP</b></td>
+						<td style="vertical-align:middle;">Piarco FIR</td></tr><tr height="60px" class="clickableRow" href="/UBBA">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatrus.info/img/geo_region/logo/5_logo_1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>UBBA</b></td>
+						<td style="vertical-align:middle;">Caucasus ACC - Baku FIR</td></tr><tr height="60px" class="clickableRow" href="/UDDD">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatrus.info/img/geo_region/logo/5_logo_1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>UDDD</b></td>
+						<td style="vertical-align:middle;">Caucasus ACC - Yerevan FIR</td></tr><tr height="60px" class="clickableRow" href="/UGGG">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatrus.info/img/geo_region/logo/5_logo_1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>UGGG</b></td>
+						<td style="vertical-align:middle;">Caucasus ACC - Tbilisi FIR</td></tr><tr height="60px" class="clickableRow" href="/UKBV">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>UKBV</b></td>
+						<td style="vertical-align:middle;">vACC Ukraine</td></tr><tr height="60px" class="clickableRow" href="/UMKK">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>UMKK</b></td>
+						<td style="vertical-align:middle;">Kaliningrad FIR</td></tr><tr height="60px" class="clickableRow" href="/URRV">
+						<td style="vertical-align:middle;" width="210px"><img style="max-width:200px; max-height:50px;" src="https://vatrus.info/img/geo_region/logo/5_logo_1.png" /></td>
+						<td style="vertical-align:middle;" width="70px"><b>URRV</b></td>
+						<td style="vertical-align:middle;">Caucasus ACC - Rostov FIR</td></tr><tr height="60px" class="clickableRow" href="/VGFR">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>VGFR</b></td>
+						<td style="vertical-align:middle;">Dhaka vACC</td></tr><tr height="60px" class="clickableRow" href="/VNSM">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>VNSM</b></td>
+						<td style="vertical-align:middle;">VATSIM Nepal vACC</td></tr><tr height="60px" class="clickableRow" href="/VXXX">
+						<td style="vertical-align:middle;" width="210px">&nbsp;</td>
+						<td style="vertical-align:middle;" width="70px"><b>VXXX</b></td>
+						<td style="vertical-align:middle;">India vACC</td></tr><tr class="clickableRow" href="https://www.aero-nav.com/"><td colspan="3"><small style="float: right;">Powered by AeroNav Association.</small></td></tr></table>			</div>
+		</div>
+
+		<div id="footer">
+			<div class="container">
+				<p class="text-muted">© Copyright by AeroNav Association. All rights reserved. 2013 - 2022. All data provided are for private PC flight-simulation use only!</p>
+			</div>
+		</div>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="https://www.aero-nav.com/plugins/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+</html>
