@@ -23,14 +23,12 @@ donwloadBtn.addEventListener('click', (e) => {
 
 let directoryBtn = document.getElementById('dirs');
 directoryBtn.addEventListener('click', (e) => {
-    window.postMessage({
-        type: 'select-dirs'
-    })
+    ipcRenderer.send('select-dirs');
+});
+ipcRenderer.on("filepath", (event, file) => {
+    document.getElementById('dirBox').value = file;
 });
 
-ipcRenderer.on("filepath", (event, file) => {
-    document.getElementById('dirBox').innerText = file;
-});
 
 
 // Check update
