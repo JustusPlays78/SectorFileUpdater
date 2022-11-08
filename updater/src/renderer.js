@@ -238,3 +238,48 @@ async function streamWithProgress(length, reader, writer, progressCallback) {
         }
     }
 }
+
+
+
+// Git Operations
+
+// Vars for git
+const options = { compareSize: true, compareContent: true, compareFileAsync: true };
+const path1 = 'E:\\git\\v1';
+const path2 = 'E:\\git\\v2';
+
+let gitBtn = document.getElementById('git');
+gitBtn.addEventListener('click', (e) => {
+    git();
+});
+
+const git = async() => {
+    const res = dircompare.compareSync(path1, path2, options);
+    console.log(res.differencesFiles); // Number check :)
+    print(res);
+}
+
+function print(result) {
+    //console.log('Directories are %s', result.same ? 'identical' : 'different')
+
+    //console.log('Statistics - equal entries: %s, distinct entries: %s, left only entries: %s, right only entries: %s, differences: %s', result.equal, result.distinct, result.left, result.right, result.differences)
+
+    let oldFolder, newFolder, other;
+    result.diffSet.forEach(function(dif) {
+        if (dif.state !== "equal") {
+            console.log('Difference - name1: %s, type1: %s, name2: %s, type2: %s, state: %s',
+                dif.name1, dif.type1, dif.name2, dif.type2, dif.state);
+            if (dif.state === "right") {
+                newFolder += dif.name2 + "\n";
+            } else if (dif.state === "left") {
+                oldFolder += dif.name1 + "\n";
+            } else {
+                other += dif.name1 + "\n";
+            }
+        }
+    });
+
+    console.log(newFolder);
+    console.log(oldFolder);
+    console.log(other);
+}
