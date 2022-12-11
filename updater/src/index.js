@@ -18,15 +18,7 @@ if (require('electron-squirrel-startup')) {
 
 var filepath;
 let data = {
-    cid: {
-        save: true,
-        id: 0
-    },
-    password: {
-        save: true,
-        pass: "NaN"
-    },
-    currentInstalledAirac: 0
+
 };
 
 
@@ -71,7 +63,7 @@ const createWindow = () => {
             properties: ['openDirectory']
         });
         console.log('directories selected', filepath.filePaths);
-        mainWindow.webContents.send("filepath", filepath.filePaths);
+        mainWindow.webContents.send("path selected", filepath.filePaths);
         // Save directory to file
     });
 
