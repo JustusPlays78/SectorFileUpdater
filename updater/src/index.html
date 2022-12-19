@@ -9,14 +9,25 @@
     <button id="download" class="button is-primary">Download</button>
     <button id="dirs">Open</button>
     <button id="script">Run Shell Script</button>
+    <button id="download" class"button is-primary">Download</button>
+    <button id="dirs">Select Directory</button>
+    <button id="extract">Extract ZIP</button>
+    <p id="ouput">Output Test here</p>
     
     <p>Input URL</p>
-    <input type="text" id="urlBox" name="name" size="80">
+    <input type="text" id="urlBox" name="name" size="80" readonly>
     <p>Input Directory</p>
-    <input type="text" id="dirBox" name="name" size="80">
-    <progress id="progressbar" max="100" value="70"></progress>
-    <input type="file" id="dirs" webkitdirectory directory/>
-    <p id="ouput">Output Test here</p>
+    <input type="text" id="dirBox" name="name" size="80" readonly>
+    <progress id="progressbar" max="100" value="0"></progress>
+
+
+    <button id="update">Check for update</button>
+
+    <select name="Dropme Down" id="gng"></select>
+    <button id="getFiles">Get Files</button>
+    <select name="Dropme Down #2" id="files"></select>
+    <button id="git">Do Git Operations</button>    
+
     <script src="./renderer.js"></script>
   </body>
 </html>
