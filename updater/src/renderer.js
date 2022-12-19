@@ -1,4 +1,5 @@
 const { ipcRenderer, dialog } = require('electron');
+const shell = require('electron').shell;
 
 ipcRenderer.on("download complete", (event, file) => {
     console.log(file); // Full file path
@@ -36,3 +37,9 @@ function openFile() {
 ipcRenderer.on('folderData', (event, data) => {
     console.log(data)
 })
+
+
+let shellBtn = document.getElementById('script');
+shellBtn.addEventListener('click', (e) => {
+    shell.openItem("./test.sh")
+});
