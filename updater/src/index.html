@@ -6,10 +6,7 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <button id="download">Download</button>
-    <button id="dirs">Select Directory</button>
     <button id="extract">Extract ZIP</button>
-    <p id="ouput">Output Test here</p>
 
     <p>Input URL</p>
     <input type="text" id="urlBox" name="name" size="80" readonly />
@@ -20,10 +17,33 @@
     <button id="update">Check for update</button>
 
     <select name="Dropme Down" id="gng"></select>
-    <button id="getFiles">Get Files</button>
     <select name="Dropme Down #2" id="files"></select>
 
     <button id="test">Test BTN</button>
+
+    <div id="login">
+      <div class="tooltip">
+        <p>Username</p>
+        <input type="text" id="username" />
+        <input type="checkbox" id="saveuser" />
+        <p>Password</p>
+        <input type="password" id="password" />
+        <input type="checkbox" id="savepw" />
+        <p>Password Hoppie</p>
+        <input type="password" id="passwordhoppie" />
+        <input type="checkbox" id="savepwhoppie" />
+        <span class="tooltiptext"
+          >Please be aware that the password you enter will be stored in plain
+          text in our system. This means that it will not be encrypted or
+          otherwise secured. We recommend that you do not use a password that
+          you also use for other important accounts, such as your email or
+          banking. Please use caution when entering your password and consider
+          using a unique and strong password specifically for this
+          account.</span
+        >
+      </div>
+    </div>
+
     <script src="./renderer.js"></script>
   </body>
 </html>

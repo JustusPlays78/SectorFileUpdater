@@ -1,8 +1,8 @@
 {
-    "name": "updater",
-    "productName": "updater",
-    "version": "1.0.0",
-    "description": "My Electron application description",
+    "name": "sectorfile_updater",
+    "productName": "Sectorfile Updater",
+    "version": "0.0.1",
+    "description": "This application allows users to easily update and maintain their sector files. It offers a simple, intuitive interface for downloading and installing the latest version of sector files, ensuring that users have access to the most accurate and up-to-date data. With automatic update checks and notifications, users can rest assured that their sector files are always up-to-date and ready for use.",
     "main": "src/index.js",
     "scripts": {
         "start": "electron-forge start",
@@ -12,16 +12,15 @@
         "lint": "echo \"No linting configured\""
     },
     "keywords": [],
-    "author": {
-        "name": "Julian",
-        "email": "JustusPlays78@gmail.com"
-    },
+    "authors": [
+        "Julian <JustusPlays78@gmail.com>",
+        "Paul <paul@pabr.de>"
+    ],
     "license": "MIT",
     "config": {
         "forge": {
             "packagerConfig": {},
-            "makers": [
-                {
+            "makers": [{
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
                         "name": "updater"

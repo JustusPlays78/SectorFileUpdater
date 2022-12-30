@@ -1,104 +1,104 @@
-const { ipcRenderer, dialog } = require('electron');
+const { ipcRenderer, dialog, app } = require('electron');
 const superagent = require('superagent').agent();
 var fs = require('fs');
 var DecompressZip = require('decompress-zip');
+const { version } = require('os');
 
 // Global Variabels
+let dirBox = document.getElementById('dirs');
+let usernameInput = document.getElementById('username');
+let passwordInput = document.getElementById('password');
+let passwordhoppieInput = document.getElementById('passwordhoppie');
 
-let systempath = "systemfile.json";
-let userFile = "\\userfile.json";
-var userjson = {
+// CheckBox Events
+let checkBoxUsername = document.getElementById('saveuser');
+let checkBoxPassword = document.getElementById('savepw');
+let checkBoxSavepwhoppie = document.getElementById('savepwhoppie');
+
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+let systempath = "systemfile.json"; // soll weg
+let userFile = "userfile.json"; // soll weg
+var systemstructure = {
+    path: ""
+};
+var structure = {
     region: 0,
     file: 0,
+    installcreds: false, // Not yet implemented
+    installhoppie: false, // Not yet implemented
     cid: {
         save: true,
-        id: 0
+        id: -1
     },
     password: {
         save: true,
-        pass: "NaN"
+        pass: ""
     },
-    currentInstalledAirac: 0
-};
-
-var systemJson = {
-    userpath: ""
+    passwordhoppie: {
+        save: true,
+        pass: ""
+    },
+    currentInstalledAirac: 0,
+    version: "v1"
 };
 
 document.addEventListener('DOMContentLoaded', function() { // Seems to work (tm)
     firstStart();
-    save();
 }, false);
 
+let systemsettings = "system.json";
+let settings = "settings.json";
+var filepath;
+async function firstStart() {
+    await ipcRenderer.send('app-path');
+    await ipcRenderer.on("app-path", async(event, path) => {
+        filepath = path;
+        // await delay(2000); // Not the best solution
+        // filepath = await app.getPath('home') + '\\' + systemsettings;
+        await console.log(filepath + "\\" + systemsettings);
+        if (await fs.existsSync(filepath + "\\" + systemsettings)) {
+            systemstructure = JSON.parse(fs.readFileSync(filepath + "\\" + systemsettings, 'utf8'));
+        } else {
+            await changeUserpath();
+        }
+        await console.log(systemstructure);
+        await console.log("test");
+        if (await fs.existsSync(systemstructure.path + "\\" + settings)) {
+            structure = JSON.parse(fs.readFileSync(systemstructure.path + "\\" + settings, 'utf8'));
+            if (structure.cid.save == true) {
+                usernameInput.value = structure.cid.id;
+            }
+            if (structure.password.save == true) {
+                passwordInput.value = structure.password.pass;
+            }
+            if (structure.passwordhoppie.save == true) {
+                passwordhoppieInput.value = structure.passwordhoppie.pass;
+            }
+            dirBox.value = systemstructure.path;
+            // GET INFO
 
-let firstStart = () => {
-    try {
-        const data = fs.readFileSync(systempath, 'utf8');
-    } catch (err) {
-        // Create file
-        fs.writeFile(systempath, JSON.stringify(systemJson), { flag: 'wx' }, function(err) {
-            if (err) throw err;
-        });
-    }
+        } else {
+            fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
+            gng.selectedIndex = structure.region;
+            if (files.selectedIndex < 0) {
+                files.selectedIndex = 0;
+            } else {
+                files.selectedIndex = structure.file;
+            }
+            // Broken
 
-    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-
-    try {
-        const data = fs.readFileSync(systemReadJson.userpath + userFile, 'utf8');
-        userjson = data;
-    } catch (err) {
-        // Create file
-        changeUserpath();
-    } finally {
-        var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.userpath + userFile, 'utf8'));
-        getUpdates();
-        // Set from file does not work
-        gng.selectedIndex = userReadJson.region;
+        }
+        await getUpdates();
+        gng.selectedIndex = structure.region;
         if (files.selectedIndex < 0) {
             files.selectedIndex = 0;
         } else {
-            files.selectedIndex = userReadJson.file;
+            files.selectedIndex = structure.file;
         }
+        await getFiles();
         save();
-    }
-}
-let changeUserpath = () => {
-    ipcRenderer.send('select-dirs'); // DOES NOT WORK!
-}
-ipcRenderer.on("path selected", (event, value) => {
-    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-    systemReadJson.userpath = value[0];
-    fs.writeFile(systemReadJson.userpath + userFile, JSON.stringify(userjson), function(err) {
-        if (err) throw err;
     });
-    fs.writeFile(systempath, JSON.stringify(systemReadJson), function(err) {
-        if (err) throw err;
-    });
-})
-
-ipcRenderer.on("download progress", (event, progress) => {
-    const cleanProgressInPercentages = Math.floor(progress.percent * 100); // Without decimal point
-    document.getElementById('progressbar').value = cleanProgressInPercentages;
-});
-
-let downloadBtn = document.getElementById('download');
-downloadBtn.addEventListener('click', (e) => {
-    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-    var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.userpath + userFile, 'utf8'));
-    downloadFile(files.options[files.selectedIndex].href, systemReadJson.userpath);
-});
-let directoryBtn = document.getElementById('dirs');
-directoryBtn.addEventListener('click', (e) => {});
-ipcRenderer.on("filepath", (event, file) => {
-    document.getElementById('dirBox').value = file;
-});
-
-let testBtn = document.getElementById('test');
-testBtn.addEventListener('click', (e) => {
-    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-    var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.userpath + userFile, 'utf8'));
-    decompress(files.options[files.selectedIndex].href, systemReadJson.userpath)
-});
+}
 
 // Save Event
 gng.addEventListener("change", () => {
@@ -109,14 +109,38 @@ files.addEventListener("change", () => {
     save();
 });
 
-let save = () => {
-    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-    var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.userpath + userFile, 'utf8'));
-    userReadJson.region = gng.selectedIndex;
-    userReadJson.file = files.selectedIndex;
-    fs.writeFile(systemReadJson.userpath + userFile, JSON.stringify(userReadJson), function(err) {
-        if (err) throw err;
-    });
+function save() {
+    // WORK HERE, new files
+    // Read config
+    structure = JSON.parse(fs.readFileSync(systempath.path + userFile, 'utf8'));
+    structure.region = gng.selectedIndex;
+    structure.file = files.selectedIndex;
+    if (checkBoxUsername.checked == true) {
+        structure.cid.id = usernameInput.value;
+        structure.cid.save = true;
+    } else {
+        structure.cid.id = -1;
+        structure.cid.save = false;
+    }
+    if (checkBoxPassword.checked == true) {
+        structure.password.pass = passwordInput.value;
+        structure.password.save = true;
+    } else {
+        structure.password.pass = "";
+        structure.password.save = false;
+    }
+    if (checkBoxSavepwhoppie.checked == true) {
+        structure.passwordhoppie.pass = passwordhoppieInput.value;
+        structure.passwordhoppie.save = true;
+    } else {
+        structure.passwordhoppie.pass = "";
+        structure.passwordhoppie.save = false;
+    }
+    // WIP
+    //structure.currentInstalledAirac = currentAirac;
+    //structure.version = airacversion;
+    // Save config
+    fs.writeFileSync(systemstructure.path + "\\" + userFile, JSON.stringify(structure, null, 4), 'utf8');
 };
 
 // Check update
@@ -130,16 +154,14 @@ updateBtn.addEventListener('click', () => {
 });
 
 // Remove all files when changing Region --> WIP no nicht
-const removeFileItems = () => {
+function removeFileItems() {
     var i, L = dropDownFiles.options.length - 1;
     for (i = L; i >= 0; i--) {
         dropDownFiles.remove(i);
     }
 }
 
-const getUpdates = async() => {
-
-
+async function getUpdates() {
     // Get all GNG Options
     const courses = await superagent.get('https://files.aero-nav.com/');
     let text = courses.text.split("Download Pages").pop();
@@ -170,14 +192,7 @@ const getUpdates = async() => {
     getFiles();
 }
 
-// Check Files
-let getFilesBtn = document.getElementById('getFiles');
-getFilesBtn.addEventListener('click', (e) => {
-    hrefLinks = getFiles();
-    console.log("leaveme alone " + hrefLinks);
-});
-
-const getFiles = async() => {
+async function getFiles() {
     removeFileItems();
     // Get all GNG Package Options
     let region = "https://files.aero-nav.com/" + dropDownGNG.options[dropDownGNG.selectedIndex].text;
@@ -232,7 +247,7 @@ const getFiles = async() => {
 }
 
 
-let downloadFile = (source, path) => {
+function downloadFile(source, path) {
     console.log(source)
     const zipFile = source.split('/').pop();
 
@@ -248,7 +263,7 @@ let downloadFile = (source, path) => {
 }
 
 // Unzip file
-let decompress = (url, DESTINATION_PATH) => {
+function decompress(url, DESTINATION_PATH) {
     let file = url.split('/').pop()
     var ZIP_FILE_PATH = DESTINATION_PATH + "\\" + file;
     DESTINATION_PATH += "\\" + file.split('.')[0];
@@ -276,3 +291,32 @@ let decompress = (url, DESTINATION_PATH) => {
         path: DESTINATION_PATH
     });
 }
+
+
+
+function changeUserpath() {
+    ipcRenderer.send('app-path');
+}
+
+ipcRenderer.on("app-path", (event, value) => {
+    systemstructure.path = value[0];
+    fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
+})
+
+ipcRenderer.on("download progress", (event, progress) => {
+    const cleanProgressInPercentages = Math.floor(progress.percent * 100); // Without decimal point
+    document.getElementById('progressbar').value = cleanProgressInPercentages;
+});
+
+// let downloadBtn = document.getElementById('download');
+// downloadBtn.addEventListener('click', (e) => {
+//     var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
+//     var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.path + userFile, 'utf8'));
+//     downloadFile(files.options[files.selectedIndex].href, systemReadJson.path);
+// });
+let testBtn = document.getElementById('test');
+testBtn.addEventListener('click', (e) => {
+    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
+    var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.path + userFile, 'utf8'));
+    decompress(files.options[files.selectedIndex].href, systemReadJson.path)
+});

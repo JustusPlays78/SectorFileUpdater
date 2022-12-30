@@ -1,3 +1,7 @@
+# Programm JSON files
+systemfile.json
+settings.json
+
 # Logs
 logs
 *.log

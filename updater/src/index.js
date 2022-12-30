@@ -58,12 +58,12 @@ const createWindow = () => {
         }*/
 
     // Select Directory
-    ipcMain.on('select-dirs', async(event, arg) => {
+    ipcMain.on('app-path', async(event, arg) => {
         filepath = await dialog.showOpenDialog(mainWindow, {
             properties: ['openDirectory']
         });
         console.log('directories selected', filepath.filePaths);
-        mainWindow.webContents.send("path selected", filepath.filePaths);
+        mainWindow.webContents.send("app-path", filepath.filePaths);
         // Save directory to file
     });
 
