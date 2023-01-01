@@ -100,7 +100,6 @@ async function firstStart() {
     } else {
         files.selectedIndex = structure.file;
     }
-    await removeFileItems();
     await getFiles();
     save();
 }
@@ -120,6 +119,9 @@ function save() {
     structure = JSON.parse(fs.readFileSync(systemstructure.path + "\\" + settings, 'utf8'));
     structure.region = gng.selectedIndex;
     structure.file = files.selectedIndex;
+    if (structure.file == -1) {
+        structure.file = 0;
+    }
     if (checkBoxUsername.checked == true) {
         structure.cid.id = usernameInput.value;
         structure.cid.save = true;
@@ -240,6 +242,7 @@ async function getFiles() {
     const hrefLinksArray = hrefLinksList.split("\n");
     hrefLinksArray.pop();
 
+    removeFileItems();
     // Add Elements to Drop Down
     for (let i = 0; i < fileNamesArray.length; i++) {
         var option = document.createElement("option");
@@ -247,7 +250,10 @@ async function getFiles() {
         option.href = hrefLinksArray[i];
         dropDownFiles.add(option);
     }
-
+    if (structure.file != -1) {
+        dropDownFiles.selectedIndex = structure.file;
+    }
+    //files.selectedIndex = structure.file;
     return hrefLinksArray;
 }
 
