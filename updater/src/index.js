@@ -62,7 +62,6 @@ const createWindow = () => {
         filepath = await dialog.showOpenDialog(mainWindow, {
             properties: ['openDirectory']
         });
-        console.log('directories selected', filepath.filePaths);
         mainWindow.webContents.send("app-path", filepath.filePaths);
         // Save directory to file
     });

@@ -1,14 +1,14 @@
-const { ipcRenderer, dialog, app } = require('electron');
+const { ipcRenderer, app } = require('electron');
 const superagent = require('superagent').agent();
 var fs = require('fs');
 var DecompressZip = require('decompress-zip');
-const { version } = require('os');
 
 // Global Variabels
-let dirBox = document.getElementById('dirs');
+let dirBox = document.getElementById('dirBox');
 let usernameInput = document.getElementById('username');
 let passwordInput = document.getElementById('password');
 let passwordhoppieInput = document.getElementById('passwordhoppie');
+let saveCredBtn = document.getElementById('savecred');
 
 // CheckBox Events
 let checkBoxUsername = document.getElementById('saveuser');
@@ -16,8 +16,6 @@ let checkBoxPassword = document.getElementById('savepw');
 let checkBoxSavepwhoppie = document.getElementById('savepwhoppie');
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-let systempath = "systemfile.json"; // soll weg
-let userFile = "userfile.json"; // soll weg
 var systemstructure = {
     path: ""
 };
@@ -46,58 +44,65 @@ document.addEventListener('DOMContentLoaded', function() { // Seems to work (tm)
     firstStart();
 }, false);
 
-let systemsettings = "system.json";
+let systemsettings = "systemfile.json";
 let settings = "settings.json";
-var filepath;
+var filepath = "F:\\02 Benutzer\\Chef\\Dokumente\\00 Git\\sectorfileupdater\\updater"; // Set to exe path ex: app.getPath('exe') + '\\' + systemsettings;
 async function firstStart() {
-    await ipcRenderer.send('app-path');
-    await ipcRenderer.on("app-path", async(event, path) => {
-        filepath = path;
-        // await delay(2000); // Not the best solution
-        // filepath = await app.getPath('home') + '\\' + systemsettings;
-        await console.log(filepath + "\\" + systemsettings);
-        if (await fs.existsSync(filepath + "\\" + systemsettings)) {
-            systemstructure = JSON.parse(fs.readFileSync(filepath + "\\" + systemsettings, 'utf8'));
-        } else {
-            await changeUserpath();
+    // await ipcRenderer.send('app-path');
+    // await ipcRenderer.on("app-path", async(event, path) => {
+    //     filepath = path;
+    // });
+    // await delay(2000); // Not the best solution
+    // filepath = await app.getPath('home') + '\\' + systemsettings;
+    await console.log(filepath + "\\" + systemsettings);
+    if (await fs.existsSync(filepath + "\\" + systemsettings)) {
+        systemstructure = JSON.parse(fs.readFileSync(filepath + "\\" + systemsettings, 'utf8'));
+    } else {
+        await changeUserpath();
+    }
+    if (await fs.existsSync(systemstructure.path + "\\" + settings)) {
+        structure = JSON.parse(fs.readFileSync(systemstructure.path + "\\" + settings, 'utf8'));
+        if (structure.cid.save == true) {
+            usernameInput.value = structure.cid.id;
         }
-        await console.log(systemstructure);
-        await console.log("test");
-        if (await fs.existsSync(systemstructure.path + "\\" + settings)) {
-            structure = JSON.parse(fs.readFileSync(systemstructure.path + "\\" + settings, 'utf8'));
-            if (structure.cid.save == true) {
-                usernameInput.value = structure.cid.id;
-            }
-            if (structure.password.save == true) {
-                passwordInput.value = structure.password.pass;
-            }
-            if (structure.passwordhoppie.save == true) {
-                passwordhoppieInput.value = structure.passwordhoppie.pass;
-            }
-            dirBox.value = systemstructure.path;
-            // GET INFO
-
-        } else {
-            fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
-            gng.selectedIndex = structure.region;
-            if (files.selectedIndex < 0) {
-                files.selectedIndex = 0;
-            } else {
-                files.selectedIndex = structure.file;
-            }
-            // Broken
-
+        if (structure.password.save == true) {
+            passwordInput.value = structure.password.pass;
         }
-        await getUpdates();
+        if (structure.passwordhoppie.save == true) {
+            passwordhoppieInput.value = structure.passwordhoppie.pass;
+        }
+        if (structure.cid.save == true) {
+            checkBoxUsername.checked = true;
+        }
+        if (structure.password.save == true) {
+            checkBoxPassword.checked = true;
+        }
+        if (structure.passwordhoppie.save == true) {
+            checkBoxSavepwhoppie.checked = true;
+        }
+        dirBox.value = systemstructure.path;
+
+    } else {
+        fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
         gng.selectedIndex = structure.region;
         if (files.selectedIndex < 0) {
             files.selectedIndex = 0;
         } else {
             files.selectedIndex = structure.file;
         }
-        await getFiles();
-        save();
-    });
+        // Broken
+
+    }
+    await getUpdates();
+    gng.selectedIndex = structure.region;
+    if (files.selectedIndex < 0) {
+        files.selectedIndex = 0;
+    } else {
+        files.selectedIndex = structure.file;
+    }
+    await removeFileItems();
+    await getFiles();
+    save();
 }
 
 // Save Event
@@ -112,7 +117,7 @@ files.addEventListener("change", () => {
 function save() {
     // WORK HERE, new files
     // Read config
-    structure = JSON.parse(fs.readFileSync(systempath.path + userFile, 'utf8'));
+    structure = JSON.parse(fs.readFileSync(systemstructure.path + "\\" + settings, 'utf8'));
     structure.region = gng.selectedIndex;
     structure.file = files.selectedIndex;
     if (checkBoxUsername.checked == true) {
@@ -140,7 +145,7 @@ function save() {
     //structure.currentInstalledAirac = currentAirac;
     //structure.version = airacversion;
     // Save config
-    fs.writeFileSync(systemstructure.path + "\\" + userFile, JSON.stringify(structure, null, 4), 'utf8');
+    fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
 };
 
 // Check update
@@ -193,7 +198,7 @@ async function getUpdates() {
 }
 
 async function getFiles() {
-    removeFileItems();
+    await removeFileItems();
     // Get all GNG Package Options
     let region = "https://files.aero-nav.com/" + dropDownGNG.options[dropDownGNG.selectedIndex].text;
     let courses = await superagent.get(region);
@@ -300,6 +305,7 @@ function changeUserpath() {
 
 ipcRenderer.on("app-path", (event, value) => {
     systemstructure.path = value[0];
+    dirBox.value = value[0];
     fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
 })
 
@@ -310,13 +316,17 @@ ipcRenderer.on("download progress", (event, progress) => {
 
 // let downloadBtn = document.getElementById('download');
 // downloadBtn.addEventListener('click', (e) => {
-//     var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-//     var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.path + userFile, 'utf8'));
+//     var systemReadJson = JSON.parse(fs.readFileSync(systemsettings, 'utf8'));
+//     var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.path + settings, 'utf8'));
 //     downloadFile(files.options[files.selectedIndex].href, systemReadJson.path);
 // });
 let testBtn = document.getElementById('test');
 testBtn.addEventListener('click', (e) => {
-    var systemReadJson = JSON.parse(fs.readFileSync(systempath, 'utf8'));
-    var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.path + userFile, 'utf8'));
+    var systemReadJson = JSON.parse(fs.readFileSync(systemsettings, 'utf8'));
+    var userReadJson = JSON.parse(fs.readFileSync(systemReadJson.path + settings, 'utf8'));
     decompress(files.options[files.selectedIndex].href, systemReadJson.path)
+});
+
+saveCredBtn.addEventListener('click', (e) => {
+    save();
 });
