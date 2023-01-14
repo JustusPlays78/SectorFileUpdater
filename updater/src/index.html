@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Sectorfile Updater</title>
     <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <button id="extract">Extract ZIP</button>
     <p>Input Directory</p>
     <input type="text" id="dirBox" name="name" size="80" readonly />
@@ -19,40 +21,44 @@
     <button id="test">Test BTN</button>
 
     <div id="login">
-      <p>Username</p>
-      <input type="text" id="username" />
-      <input type="checkbox" id="saveuser" />
-      <div class="tooltip">
-        <p>Password</p>
-        <input type="password" id="password" />
-        <input type="checkbox" id="savepw" />
-        <span class="tooltiptext"
-          >Please be aware that the password you enter will be stored in plain
-          text in our system. This means that it will not be encrypted or
-          otherwise secured. We recommend that you do not use a password that
-          you also use for other important accounts, such as your email or
-          banking. Please use caution when entering your password and consider
-          using a unique and strong password specifically for this
-          account.</span
-        >
-      </div>
-      <div class="tooltip">
-        <p>Password Hoppie</p>
-        <input type="password" id="passwordhoppie" />
-        <input type="checkbox" id="savepwhoppie" />
-        <span class="tooltiptext"
-          >Please be aware that the password you enter will be stored in plain
-          text in our system. This means that it will not be encrypted or
-          otherwise secured. We recommend that you do not use a password that
-          you also use for other important accounts, such as your email or
-          banking. Please use caution when entering your password and consider
-          using a unique and strong password specifically for this
-          account.</span
-        >
-      </div>
-      <button id="savecred">Save your Credentials</button>
+        <p>Username</p>
+        <input type="text" id="username" />
+        <input type="checkbox" id="saveuser" />
+        <div class="tooltip">
+            <p>Password</p>
+            <input type="password" id="password" />
+            <input type="checkbox" id="savepw" />
+            <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
+        text in our system. This means that it will not be encrypted or
+        otherwise secured. We recommend that you do not use a password that
+        you also use for other important accounts, such as your email or
+        banking. Please use caution when entering your password and consider
+        using a unique and strong password specifically for this
+        account.</span>
+        </div>
+        <div class="tooltip">
+            <p>Password Hoppie</p>
+            <input type="password" id="passwordhoppie" />
+            <input type="checkbox" id="savepwhoppie" />
+            <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
+        text in our system. This means that it will not be encrypted or
+        otherwise secured. We recommend that you do not use a password that
+        you also use for other important accounts, such as your email or
+        banking. Please use caution when entering your password and consider
+        using a unique and strong password specifically for this
+        account.</span>
+        </div>
+        <button id="savecred">Save your Credentials</button>
     </div>
 
     <script src="./renderer.js"></script>
-  </body>
+    <script src="./html_elements.js"></script>
+    <script src="./startup.js"></script>
+    <script src="./save.js"></script>
+    <script src="./getFiles.js"></script>
+    <script src="./unzip.js"></script>
+    <script src="./data_structure.js"></script>
+    <script src="./download.js"></script>
+</body>
+
 </html>
