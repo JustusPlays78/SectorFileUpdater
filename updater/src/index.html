@@ -8,57 +8,95 @@
 </head>
 
 <body>
-    <button id="extract">Extract ZIP</button>
-    <p>Input Directory</p>
+    <button id="select-dir">Select Directory</button>
     <input type="text" id="dirBox" name="name" size="80" readonly />
     <progress id="progressbar" max="100" value="0"></progress>
-
-    <button id="update">Check for update</button>
-
+    <p id="progressbarText"></p>
+    <br>
     <select id="gng"></select>
     <select id="files"></select>
 
-    <button id="test">Test BTN</button>
+    <button id="download" style="display:block">Download Update</button>
+    <!-- <button id="download" style="display:none">Download Update</button> -->
 
+    <br>
     <div id="login">
-        <p>Username</p>
-        <input type="text" id="username" />
-        <input type="checkbox" id="saveuser" />
-        <div class="tooltip">
-            <p>Password</p>
-            <input type="password" id="password" />
-            <input type="checkbox" id="savepw" />
-            <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
-        text in our system. This means that it will not be encrypted or
-        otherwise secured. We recommend that you do not use a password that
-        you also use for other important accounts, such as your email or
-        banking. Please use caution when entering your password and consider
-        using a unique and strong password specifically for this
-        account.</span>
-        </div>
-        <div class="tooltip">
-            <p>Password Hoppie</p>
-            <input type="password" id="passwordhoppie" />
-            <input type="checkbox" id="savepwhoppie" />
-            <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
-        text in our system. This means that it will not be encrypted or
-        otherwise secured. We recommend that you do not use a password that
-        you also use for other important accounts, such as your email or
-        banking. Please use caution when entering your password and consider
-        using a unique and strong password specifically for this
-        account.</span>
-        </div>
-        <button id="savecred">Save your Credentials</button>
+        <select id="rating">
+            <option id="0">obs</option>
+            <option id="1">s1</option>
+            <option id="2">s2</option>
+            <option id="3">s3</option>
+            <option id="4">c1</option>
+            <option id="6">c3</option>
+            <option id="7">i1</option>
+            <option id="9">i3</option>
+            <option id="10">sup</option>
+            <option id="11">adm</option>
+        </select>
+
+        <form>
+            <p>Realname</p>
+            <input type="text" id="realname" />
+            <input type="checkbox" id="saverealname" />
+            <p>Username</p>
+            <input type="text" id="username" />
+            <input type="checkbox" id="saveuser" />
+            <div class="tooltip">
+                <p>Password</p>
+                <input type="password" id="password" />
+                <input type="checkbox" id="savepw" />
+                <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
+                    text in our system. This means that it will not be encrypted or
+                    otherwise secured. We recommend that you do not use a password that
+                    you also use for other important accounts, such as your email or
+                    banking. Please use caution when entering your password and consider
+                    using a unique and strong password specifically for this
+                    account.</span>
+            </div>
+            <div class="tooltip">
+                <p>Password Hoppie</p>
+                <input type="password" id="passwordhoppie" />
+                <input type="checkbox" id="savepwhoppie" />
+                <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
+                    text in our system. This means that it will not be encrypted or
+                    otherwise secured. We recommend that you do not use a password that
+                    you also use for other important accounts, such as your email or
+                    banking. Please use caution when entering your password and consider
+                    using a unique and strong password specifically for this
+                    account.</span>
+            </div>
+            <button id="savecred">Save your Credentials</button>
+        </form>
     </div>
 
-    <script src="./renderer.js"></script>
+    <form>
+        If you want Eurosounds, please check the box below and click the download button. <br>
+        <input type="checkbox" id="download-checkbox" onclick="toggleDownloadButton()"> I confirm that I would like to download the file.
+        <br>
+        <a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip" id="download-link" style="display:none">Download</a>
+    </form>
+    <script>
+        function toggleDownloadButton() {
+            const downloadLink = document.getElementById("download-link");
+            if (document.getElementById("download-checkbox").checked) {
+                downloadLink.style.display = "block";
+            } else {
+                downloadLink.style.display = "none";
+            }
+        }
+    </script>
+
+
+
     <script src="./html_elements.js"></script>
+    <script src="./renderer.js"></script>
     <script src="./startup.js"></script>
     <script src="./save.js"></script>
     <script src="./getFiles.js"></script>
-    <script src="./unzip.js"></script>
     <script src="./data_structure.js"></script>
     <script src="./download.js"></script>
+    <script src="./git_ops.js"></script>
+    <script src="./append_to_file.js"></script>
 </body>
 
 </html>

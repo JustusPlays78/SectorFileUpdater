@@ -7,18 +7,23 @@ var structure = {
     file: 0,
     installcreds: false, // Not yet implemented
     installhoppie: false, // Not yet implemented
+    realname: {
+        save: false,
+        name: ""
+    },
     cid: {
-        save: true,
+        save: false,
         id: -1
     },
     password: {
-        save: true,
+        save: false,
         pass: ""
     },
     passwordhoppie: {
-        save: true,
+        save: false,
         pass: ""
     },
+    rating: 0,
     currentInstalledAirac: 0,
-    version: "v1"
+    version: "1"
 };
