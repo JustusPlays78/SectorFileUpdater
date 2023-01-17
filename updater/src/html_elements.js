@@ -15,6 +15,8 @@ let checkBoxUsername = document.getElementById('saveuser');
 let checkBoxPassword = document.getElementById('savepw');
 let checkBoxSavepwhoppie = document.getElementById('savepwhoppie');
 let checkBoxRealname = document.getElementById('saverealname');
+let applyToPrf = document.getElementById('applyToPrf');
+let applyHoppie = document.getElementById('applyHoppie');
 
 // Check update
 let dropDownGNG = document.getElementById('gng');

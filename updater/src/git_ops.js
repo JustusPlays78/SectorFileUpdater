@@ -1,6 +1,6 @@
 const path = require('path');
 
-function compareFolders(templatePath, comparedPath, originalPath) {
+function compareFolders(templatePath, comparedPath, originalPath, pathToAppend) {
     // get all files and directories in template folder
     const templateFiles = fs.readdirSync(templatePath, { withFileTypes: true });
     // loop through each file/directory in template folder
@@ -14,7 +14,7 @@ function compareFolders(templatePath, comparedPath, originalPath) {
             if (!fs.existsSync(comparedFilePath)) {
                 fs.mkdirSync(comparedFilePath);
             }
-            compareFolders(templateFilePath, comparedFilePath, originalPath);
+            compareFolders(templateFilePath, comparedFilePath, originalPath, pathToAppend);
         } else {
             // check if the file exists in the compared folder
             if (!fs.existsSync(comparedFilePath)) {
@@ -38,8 +38,4 @@ function compareFolders(templatePath, comparedPath, originalPath) {
             }
         }
     });
-
-    // realname, cert, pass, rating
-    data = [structure.realname.name, structure.cid.id, structure.password.pass, structure.rating];
-    searchAndAppend(originalPath, data);
 }

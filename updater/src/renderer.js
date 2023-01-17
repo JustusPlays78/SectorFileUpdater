@@ -53,7 +53,14 @@ ipcRenderer.on('progressbar', (event, args) => {
     progressbar.value = args.progress;
 });
 
-rating.addEventListener('click', (e) => {
-    structure.rating = rating.options[rating.selectedIndex].id;
+rating.addEventListener('change', (e) => {
+    save();
+});
+
+applyToPrf.addEventListener('click', (e) => {
+    save();
+});
+
+applyHoppie.addEventListener('click', (e) => {
     save();
 });

@@ -35,9 +35,9 @@ function save() {
         structure.passwordhoppie.save = false;
     }
     structure.rating = rating.options[rating.selectedIndex].id;
+    structure.installcreds = applyToPrf.checked;
+    structure.installhoppie = applyHoppie.checked;
     // Save config
-    console.log("Saving config");
-    console.log(systemstructure.path + "\\" + settings);
     fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
 };
 

@@ -5,7 +5,7 @@ var systemstructure = {
 var structure = {
     region: 0,
     file: 0,
-    installcreds: false, // Not yet implemented
+    installcreds: false,
     installhoppie: false, // Not yet implemented
     realname: {
         save: false,

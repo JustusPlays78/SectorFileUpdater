@@ -7,6 +7,7 @@ var region = "";
 function downloadFile(source) {
     saveDownloadInfo(dropDownFiles.options[dropDownFiles.selectedIndex].version);
     let startpath = systemstructure.path;
+    createLocalStructure(startpath);
     airacversion = structure.currentInstalledAirac;
     releaseversion = structure.version;
     region = gng.options[gng.selectedIndex].text;
@@ -35,14 +36,25 @@ function downloadFile(source) {
     });
 
     request
-        .pipe(fs.createWriteStream(startpath + "\\" + zipFile))
+        .pipe(fs.createWriteStream(`${startpath}/${zipFile}`))
         .on('finish', function() {
             // Code to extract file
-            fs.createReadStream(startpath + "\\" + zipFile)
+            fs.createReadStream(`${startpath}/${zipFile}`)
                 .pipe(unzipper.Extract({ path: `${startpath}/${region}/${airacversion}_v${releaseversion}` }))
                 .on('finish', function() {
-                    console.log("Decompressed successfully.");
+                    // console.log("Decompressed successfully.");
+                    fs.rename(`${startpath}/${zipFile}`, `${startpath}/zipfiles/${zipFile}`, (err) => {
+                        if (err) throw err;
+                        // console.log('File moved successfully.');
+                    });
                     compareFolders(templatePath, comparedPath, startpath);
+
+                    if (structure.installcreds == true) {
+                        // realname, cert, pass, rating
+                        data = [structure.realname.name, structure.cid.id, structure.password.pass, structure.rating];
+                        searchAndAppendCredentials(comparedPath, data);
+                    }
+                    if (structure.installhoppie == true) { searchAndInsertHoppie(comparedPath); }
                 });
         });
 }
@@ -53,12 +65,13 @@ function createFolder(folder) {
     }
 };
 
-function createLocalStructure() {
+function createLocalStructure(startpath) {
     const airacversion = structure.currentInstalledAirac;
     const releaseversion = structure.version;
     const region = gng.options[gng.selectedIndex].text;
 
-    createFolder('config');
-    createFolder(`${region}`);
-    createFolder(`${region}/${airacversion}_v${releaseversion}`);
+    createFolder(`${startpath}/config`);
+    createFolder(`${startpath}/zipfiles`);
+    createFolder(`${startpath}/${region}`);
+    createFolder(`${startpath}/${region}/${airacversion}_v${releaseversion}`);
 }
