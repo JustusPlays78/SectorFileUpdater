@@ -1,7 +1,6 @@
 const { app, BrowserWindow, dialog, ipcMain, Menu } = require('electron');
 const path = require('path');
 //Menu.setApplicationMenu(false); // Top Bar removal
-Menu.setApplicationMenu(false);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require

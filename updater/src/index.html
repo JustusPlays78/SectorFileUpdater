@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./css/boot.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 <!DOCTYPE html>
-<html class="ecsu-bg-dark-light-out">
+<html class="bg-dark">
 
 <head>
     <meta charset="utf-8">
@@ -11,48 +11,69 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="./index.css">
     <div class="container-fluid">
-      <h1 class="navbar-brand text-white text-center">
+      <h1 class="text-white text-center">
           AIRAC Updater
       </h1>
     </div>
   </head>  
 
-<body class="">
-    <button id="select-dir">Select Directory</button>
-    <input type="text" id="dirBox" name="name" size="50" readonly />
-    <progress id="progressbar" max="100" value="0"></progress>
-    <p id="progressbarText"></p>
-    <br>
-    <select id="gng"></select>
-    <select id="files"></select>
 
-    <button id="download" style="display:block">Download Update</button>
-    <!-- <button id="download" style="display:none">Download Update</button> -->
+<body class="bg-dark text-white">
 
-    <br> Apply to profile: <input type="checkbox" id="applyToPrf" /> Apply Hoppie Creds: <input type="checkbox" id="applyHoppie" />
+
+    <div>    
+        <h3 class="text-white">Settings</h3>
+        <button id="select-dir">Select Directory</button>
+        <input type="text" id="dirBox" name="name" size="50" readonly />
+        <progress id="progressbar" max="100" value="0"></progress>
+        <p id="progressbarText"></p>
+        <br>
+
+    </div>
+<br>
+    <div>
+        <h3 class="text-white">Updatesettings</h3>
+        Insert Credentials to Profilefiles <input type="checkbox" id="applyToPrf" /> 
+        <br>
+        Insert Hoppie Code: <input type="checkbox" id="applyHoppie" />
     
-    <div id="login">
-        <select id="rating">
-            <option id="0">OBS</option>
-            <option id="1">s1</option>
-            <option id="2">s2</option>
-            <option id="3">s3</option>
-            <option id="4">c1</option>
-            <option id="6">c3</option>
-            <option id="7">i1</option>
-            <option id="9">i3</option>
-            <option id="10">sup</option>
-            <option id="11">adm</option>
-        </select>
+        <div id="login">
+            <body class="text-white">Select Rating</body>
+            <select id="rating">
+                <option id="0">OBS</option>
+                <option id="1">S1</option>
+                <option id="2">S2</option>
+                <option id="3">S3</option>
+                <option id="4">C1</option>
+                <option id="6">C3</option>
+                <option id="7">I1</option>
+                <option id="9">I3</option>
+                <option id="10">SUP</option>
+                <option id="11">ADM</option>
+            </select>
+            <br>
+            <br>
+            <h6 class="text-white">Select Package</h6>
+            <select id="gng"></select>
+            <select id="files"></select>
+            <button id="download" style="display:block">Download Update</button>
+    </div>
+<br>
 
 
 
+<div>
+    <h3 class="text-white">Credentials save</h3>
         <form>
             Realname: <input type="text" id="realname" />
             <input type="checkbox" id="saverealname" />
             <br> Username: <input type="text" id="username" />
             <input type="checkbox" id="saveuser" />
-            <div class="tooltip">
+            <br> Password: <input type="password" id="password" />
+            <input type="checkbox" id="savepw" />
+            <br>Hoppie Code: <input type="password" id="passwordhoppie" />
+            <input type="checkbox" id="savepwhoppie" />
+            <!--<div class="tooltip">
                 <br> Password: <input type="password" id="password" />
                 <input type="checkbox" id="savepw" />
                 <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
@@ -62,8 +83,8 @@
                     banking. Please use caution when entering your password and consider
                     using a unique and strong password specifically for this
                     account.</span>
-            </div>
-            <div class="tooltip">
+            </div>-->
+            <!--<div class="tooltip">
                 <br>Password Hoppie: <input type="password" id="passwordhoppie" />
                 <input type="checkbox" id="savepwhoppie" />
                 <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
@@ -73,7 +94,8 @@
                     banking. Please use caution when entering your password and consider
                     using a unique and strong password specifically for this
                     account.</span>
-            </div>
+            </div>-->
+            <br>
             <button id="savecred">Save your Credentials</button>
         </form>
     </div>
@@ -94,7 +116,7 @@
             }
         }
     </script>
-
+</div>
 
 
     <script src="./html_elements.js"></script>
