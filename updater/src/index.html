@@ -1,15 +1,25 @@
+<link rel="stylesheet" href="./css/boot.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 <!DOCTYPE html>
-<html>
+<html class="ecsu-bg-dark-light-out">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Sectorfile Updater</title>
-    <link rel="stylesheet" href="index.css" />
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AIRAC Updater</title>
+    <link rel="stylesheet" href="./css/boot.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="./index.css">
+    <div class="container-fluid">
+      <h1 class="navbar-brand text-white text-center">
+          AIRAC Updater
+      </h1>
+    </div>
+  </head>  
 
-<body>
+<body class="">
     <button id="select-dir">Select Directory</button>
-    <input type="text" id="dirBox" name="name" size="80" readonly />
+    <input type="text" id="dirBox" name="name" size="50" readonly />
     <progress id="progressbar" max="100" value="0"></progress>
     <p id="progressbarText"></p>
     <br>
@@ -20,10 +30,10 @@
     <!-- <button id="download" style="display:none">Download Update</button> -->
 
     <br> Apply to profile: <input type="checkbox" id="applyToPrf" /> Apply Hoppie Creds: <input type="checkbox" id="applyHoppie" />
-
+    
     <div id="login">
         <select id="rating">
-            <option id="0">obs</option>
+            <option id="0">OBS</option>
             <option id="1">s1</option>
             <option id="2">s2</option>
             <option id="3">s3</option>
@@ -34,6 +44,8 @@
             <option id="10">sup</option>
             <option id="11">adm</option>
         </select>
+
+
 
         <form>
             Realname: <input type="text" id="realname" />
