@@ -1,0 +1,265 @@
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+  </script>
+<script>
+  $(function () {
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
+  });
+</script>
+
+<body class="g-sidenav-show bg-dark">
+  <div class="main-content" id="panel">
+
+    <!--Header-->
+    <div id="header"></div>
+
+    <!--CONTENT-->
+    <div class="card mb-4 ecsu-bg-dark-light-out">
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-8 ">
+              <h6 class="mb-0 text-white">Syncing</h6>
+            </div>
+            <div class="col-4"><button class="btn btn-sm ecsu-btn-dark ">Save (WIP)</button></div>
+          </div>
+          <div>
+            <h6 class="text-uppercase text-xs font-weight-bolder text-white">Apply to Update</h6>
+            <ul class="list-group ">
+              <li class="list-group-item border-0 px-0 ecsu-bg-dark-light-out">
+                <div class="form-check form-switch ps-0">
+                  <input class="form-check-input ms-auto" type="checkbox" id="applyToPrf" checked="">
+                  <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+                    for="flexSwitchCheckDefault">Credentials into Profiles</label>
+                </div>
+              </li>
+              <li class="list-group-item border-0 px-0 ecsu-bg-dark-light-out">
+                <div class="form-check form-switch ps-0">
+                  <input class="form-check-input ms-auto" type="checkbox" id="applyHoppie">
+                  <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+                    for="flexSwitchCheckDefault1">Hoppie Code into Txt File</label>
+                </div>
+              </li>
+              <!-- <li class="list-group-item border-0 px-0 ecsu-bg-dark-light-out">
+                <div class="form-check form-switch ps-0">
+                  <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked="">
+                  <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+                    for="flexSwitchCheckDefault2">OBS</label>
+                </div>
+              </li> -->
+            </ul>
+            <!-- <h6 class="text-uppercase text-white text-xs font-weight-bolder mt-4">Application</h6>
+            <ul class="list-group">
+              <li class="list-group-item border-0 px-0 ecsu-bg-dark-light-out">
+                <div class="form-check form-switch ps-0">
+                  <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
+                  <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+                    for="flexSwitchCheckDefault3">New launches and projects</label>
+                </div>
+              </li>
+              <li class="list-group-item border-0 px-0 ecsu-bg-dark-light-out">
+                <div class="form-check form-switch ps-0">
+                  <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked="">
+                  <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+                    for="flexSwitchCheckDefault4">Monthly product updates</label>
+                </div>
+              </li>
+              <li class="list-group-item border-0 px-0 pb-0 ecsu-bg-dark-light-out">
+                <div class="form-check form-switch ps-0">
+                  <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
+                  <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+                    for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
+                </div>
+              </li>
+            </ul> -->
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!--Footer-->
+  <div id="footer"></div>
+  </div>
+  <script src="https://demos.creative-tim.com/soft-ui-dashboard/assets/js/core/popper.min.js"></script>
+  <script src="https://demos.creative-tim.com/soft-ui-dashboard/assets/js/core/bootstrap.min.js"></script>
+  <script src="https://demos.creative-tim.com/soft-ui-dashboard/assets/js/plugins/chartjs.min.js"></script>
+  <script src="https://demos.creative-tim.com/soft-ui-dashboard/assets/js/plugins/Chart.extension.js"></script>
+  <script src="https://demos.creative-tim.com/soft-ui-dashboard/assets/js/soft-ui-dashboard.min.js?v=1.0.2"></script>
+  <script>
+    if (document.querySelector("#chart-bars")) {
+      var ctx = document.getElementById("chart-bars").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+            label: "Sales",
+            tension: 0.4,
+            borderWidth: 0,
+            borderRadius: 4,
+            borderSkipped: false,
+            backgroundColor: "#fff",
+            data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+            maxBarThickness: 6
+          },],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                suggestedMin: 0,
+                suggestedMax: 500,
+                beginAtZero: true,
+                padding: 15,
+                font: {
+                  size: 14,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+                color: "#fff"
+              },
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false
+              },
+              ticks: {
+                display: false
+              },
+            },
+          },
+        },
+      });
+
+    };
+    if (document.querySelector("#chart-line")) {
+      var ctx2 = document.getElementById("chart-line").getContext("2d");
+      var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+      gradientStroke1.addColorStop(1, "rgba(203,12,159,0.2)");
+      gradientStroke1.addColorStop(0.2, "rgba(72,72,176,0.0)");
+      gradientStroke1.addColorStop(0, "rgba(203,12,159,0)");
+      var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+      gradientStroke2.addColorStop(1, "rgba(20,23,39,0.2)");
+      gradientStroke2.addColorStop(0.2, "rgba(72,72,176,0.0)");
+      gradientStroke2.addColorStop(0, "rgba(20,23,39,0)");
+      new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+            label: "Mobile apps",
+            tension: 0.4,
+            borderWidth: 0,
+            pointRadius: 0,
+            borderColor: "#cb0c9f",
+            borderWidth: 3,
+            backgroundColor: gradientStroke1,
+            fill: true,
+            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+            maxBarThickness: 6
+
+          },
+          {
+            label: "Websites",
+            tension: 0.4,
+            borderWidth: 0,
+            pointRadius: 0,
+            borderColor: "#3A416F",
+            borderWidth: 3,
+            backgroundColor: gradientStroke2,
+            fill: true,
+            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+            maxBarThickness: 6
+          },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                color: '#b2b9bf',
+                padding: 20,
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+          },
+        },
+      });
+    };
+  </script>
+  <script src="./js/loopple.js"></script>
+  <script>
+    $(function () {
+      $("#header").load(".\html\header.html");
+      $("#footer").load(".\html\footer.html");
+    });
+  </script>
+</body>
