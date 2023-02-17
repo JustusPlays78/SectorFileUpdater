@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain, Menu } = require('electron');
 const path = require('path');
 //Menu.setApplicationMenu(false); // Top Bar removal
 
@@ -11,8 +11,8 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 1920,
-        height: 1080,
+        width: 1000,
+        height: 800,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,

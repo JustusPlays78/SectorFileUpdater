@@ -1,6 +1,6 @@
 let systemsettings = "systemfile.json";
 let settings = "settings.json";
-var filePath = "F:\\02 Benutzer\\Chef\\Dokumente\\00 Git\\sectorfileupdater\\updater"; // Set to exe path ex: app.getPath('exe') + '\\' + systemsettings;
+var filePath = "C:\\Users\\Julian\\Desktop\\SECTORFILES\\LEeeres"; // Set to exe path ex: app.getPath('exe') + '\\' + systemsettings;
 
 async function firstStart() {
     // Get the file path
