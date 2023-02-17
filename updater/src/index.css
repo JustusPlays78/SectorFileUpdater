@@ -136,7 +136,7 @@ body {
   }
   
   .ecsu-bg-dark-out {
-    background: #212529;
+    background: #23262c;
   }
   
   .ecsu-bg-dark-light-out {
@@ -171,7 +171,7 @@ body {
   
   .ecsu-btn-dark {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #2b303a;
+    --bs-btn-bg: #14161a;
     --bs-btn-border-color: #344767;
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #4a5c7c;

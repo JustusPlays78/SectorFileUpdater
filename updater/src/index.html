@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./css/boot.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 <!DOCTYPE html>
-<html class="bg-dark">
+<html class="ecsu-bg-dark-out">
 
 <head>
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
   </head>  
 
 
-<body class="bg-dark text-white">
+<body class="ecsu-bg-dark-out text-white">
 
 
     <div>    
@@ -27,15 +27,22 @@
         <input type="text" id="dirBox" name="name" size="50" readonly />
         <progress id="progressbar" max="100" value="0"></progress>
         <p id="progressbarText"></p>
-        <br>
-
     </div>
-<br>
     <div>
         <h3 class="text-white">Updatesettings</h3>
-        Insert Credentials to Profilefiles <input type="checkbox" id="applyToPrf" /> 
+        <!--Insert Credentials to Profilefiles <input type="checkbox" id="applyToPrf" />-->
+        <div class="form-check form-switch ps-0">
+            <input class="form-check-input ms-auto" type="checkbox" id="applyToPrf">
+            <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+              for="flexSwitchCheckDefault">Insert Credentials to Profilefiles</label>
+          </div> 
         <br>
-        Insert Hoppie Code: <input type="checkbox" id="applyHoppie" />
+        <!--Insert Hoppie Code: <input type="checkbox" id="applyHoppie" />-->
+        <div class="form-check form-switch ps-0">
+            <input class="form-check-input ms-auto" type="checkbox" id="applyHoppie">
+            <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
+              for="flexSwitchCheckDefault">Insert Hoppie Code</label>
+          </div>
     
         <div id="login">
             <body class="text-white">Select Rating</body>
@@ -65,14 +72,55 @@
 <div>
     <h3 class="text-white">Credentials save</h3>
         <form>
-            Realname: <input type="text" id="realname" />
+            <!--Realname: <input type="text" id="realname" />
             <input type="checkbox" id="saverealname" />
             <br> Username: <input type="text" id="username" />
             <input type="checkbox" id="saveuser" />
             <br> Password: <input type="password" id="password" />
             <input type="checkbox" id="savepw" />
-            <br>Hoppie Code: <input type="password" id="passwordhoppie" />
-            <input type="checkbox" id="savepwhoppie" />
+            <br>  Hoppie Code: <input type="password" id="passwordhoppie" />
+            <input type="checkbox" id="savepwhoppie" />-->
+            <br>
+            <div>
+                <div class="row">
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                        <div class="form-check form-switch ps-0">
+                            <label class="form-control-label text-white" for="input-username">Realname</label>
+                            <input class="form-check-input ms-auto" type="checkbox" id="saverealname">
+                            <input type="text" id="realname" class="form-control" placeholder="Realname">
+                        </div> 
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                        <div class="form-check form-switch ps-0">
+                            <label class="form-control-label text-white" for="input-username">CID</label>
+                            <input class="form-check-input ms-auto" type="checkbox" id="saveuser">
+                            <input type="text" id="username" class="form-control" placeholder="CID">
+                        </div> 
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                        <div class="form-check form-switch ps-0">
+                            <label class="form-control-label text-white" for="input-username">Password</label>
+                            <input class="form-check-input ms-auto" type="checkbox" id="savepw">
+                            <input type="password" id="password" class="form-control" placeholder="Password">
+                        </div> 
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="form-group">
+                        <div class="form-check form-switch ps-0">
+                            <label class="form-control-label text-white" for="input-username">Hoppie Code</label>
+                            <input class="form-check-input ms-auto" type="checkbox" id="savepwhoppie">
+                            <input type="text" id="passwordhoppie" class="form-control" placeholder="Hoppie Code">
+                        </div> 
+                    </div>
+                  </div>
+                </div>
+    
             <!--<div class="tooltip">
                 <br> Password: <input type="password" id="password" />
                 <input type="checkbox" id="savepw" />
@@ -104,7 +152,8 @@
         If you want Eurosounds, please check the box below and click the download button. <br>
         <input type="checkbox" id="download-checkbox" onclick="toggleDownloadButton()"> I confirm that I would like to download the file.
         <br>
-        <a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip" id="download-link" style="display:none" class="text-white">Download</a>
+        <button id="download-link" style="display:none" ><a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip">Download</a></button>
+        <!--<a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip" id="download-link" style="display:none" class="text-white">Download</a>-->
     </form>
     <script>
         function toggleDownloadButton() {
