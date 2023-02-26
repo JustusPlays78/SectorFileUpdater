@@ -1,15 +1,20 @@
 let systemsettings = "systemfile.json";
 let settings = "settings.json";
-var filePath = "C:\\Users\\Julian\\Desktop\\SECTORFILES\\LEeeres"; // Set to exe path ex: app.getPath('exe') + '\\' + systemsettings;
+let filePath = "";
+
+//var filePath = app.getPath('exe') + '\\' + systemsettings; // Set to exe path ex: app.getPath('exe') + '\\' + systemsettings;
 
 async function firstStart() {
-    // Get the file path
-    // filePath = await app.getPath('home');
+    await ipcRenderer.send('app-path-get');
+    await ipcRenderer.on("app-path-get", (event, path) => {
+        filePath = path; // 'undefined\settings.json'
+    });
 
+    await delay(250);
     // Check if the system settings file exists
     if (fs.existsSync(`${filePath}/${systemsettings}`)) {
         // If the file exists, read the structure
-        systemstructure = JSON.parse(fs.readFileSync(filePath + "\\" + systemsettings, 'utf8'));
+        systemstructure = JSON.parse(fs.readFileSync(`${filePath}/${systemsettings}`, 'utf8'));
     } else {
         // If the file doesn't exist, get the user path and create the file
         await changeUserpath();
@@ -22,7 +27,7 @@ async function firstStart() {
         structure = JSON.parse(fs.readFileSync(systemstructure.path + "\\" + settings, 'utf8'));
     } else {
         // If the file doesn't exist, create the file with the default structure
-        fs.writeFileSync(systemstructure.path + "\\" + settings, JSON.stringify(structure, null, 4), 'utf8');
+        fs.writeFileSync(`${systemstructure.path}/${settings}`, JSON.stringify(structure, null, 4), 'utf8');
     }
 
 
@@ -33,6 +38,8 @@ async function firstStart() {
 }
 
 function updateUI() {
+
+    console.log(structure);
 
     if (structure.realname.save) {
         realnameInput.value = structure.realname.name;

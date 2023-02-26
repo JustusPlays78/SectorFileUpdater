@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link rel="stylesheet" href="./index.css">
     <div class="container-fluid">
-      <h1 class="text-white text-center">
-          AIRAC Updater
-      </h1>
+        <h1 class="text-white text-center">
+            AIRAC Updater
+        </h1>
     </div>
-  </head>  
+</head>
 
 
 <body class="ecsu-bg-dark-out text-white">
 
 
-    <div>    
+    <div>
         <h3 class="text-white">Settings</h3>
         <button id="select-dir">Select Directory</button>
         <input type="text" id="dirBox" name="name" size="50" readonly />
@@ -33,18 +33,19 @@
         <!--Insert Credentials to Profilefiles <input type="checkbox" id="applyToPrf" />-->
         <div class="form-check form-switch ps-0">
             <input class="form-check-input ms-auto" type="checkbox" id="applyToPrf">
-            <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
-              for="flexSwitchCheckDefault">Insert Credentials to Profilefiles</label>
-          </div> 
+            <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Insert
+                Credentials to Profilefiles</label>
+        </div>
         <br>
         <!--Insert Hoppie Code: <input type="checkbox" id="applyHoppie" />-->
         <div class="form-check form-switch ps-0">
             <input class="form-check-input ms-auto" type="checkbox" id="applyHoppie">
-            <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0"
-              for="flexSwitchCheckDefault">Insert Hoppie Code</label>
-          </div>
-    
+            <label class="form-check-label text-white ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Insert
+                Hoppie Code</label>
+        </div>
+
         <div id="login">
+
             <body class="text-white">Select Rating</body>
             <select id="rating">
                 <option id="0">OBS</option>
@@ -64,15 +65,15 @@
             <select id="gng"></select>
             <select id="files"></select>
             <button id="download" style="display:block">Download Update</button>
-    </div>
-<br>
+        </div>
+        <br>
 
 
 
-<div>
-    <h3 class="text-white">Credentials save</h3>
-        <form>
-            <!--Realname: <input type="text" id="realname" />
+        <div>
+            <h3 class="text-white">Credentials save</h3>
+            <form>
+                <!--Realname: <input type="text" id="realname" />
             <input type="checkbox" id="saverealname" />
             <br> Username: <input type="text" id="username" />
             <input type="checkbox" id="saveuser" />
@@ -80,48 +81,49 @@
             <input type="checkbox" id="savepw" />
             <br>  Hoppie Code: <input type="password" id="passwordhoppie" />
             <input type="checkbox" id="savepwhoppie" />-->
-            <br>
-            <div>
-                <div class="row">
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                        <div class="form-check form-switch ps-0">
-                            <label class="form-control-label text-white" for="input-username">Realname</label>
-                            <input class="form-check-input ms-auto" type="checkbox" id="saverealname">
-                            <input type="text" id="realname" class="form-control" placeholder="Realname">
-                        </div> 
+                <br>
+                <div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <div class="form-check form-switch ps-0">
+                                    <label class="form-control-label text-white" for="input-username">Realname</label>
+                                    <input class="form-check-input ms-auto" type="checkbox" id="saverealname">
+                                    <input type="text" id="realname" class="form-control" placeholder="Realname">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <div class="form-check form-switch ps-0">
+                                    <label class="form-control-label text-white" for="input-username">CID</label>
+                                    <input class="form-check-input ms-auto" type="checkbox" id="saveuser">
+                                    <input type="text" id="username" class="form-control" placeholder="CID">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <div class="form-check form-switch ps-0">
+                                    <label class="form-control-label text-white" for="input-username">Password</label>
+                                    <input class="form-check-input ms-auto" type="checkbox" id="savepw">
+                                    <input type="password" id="password" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <div class="form-check form-switch ps-0">
+                                    <label class="form-control-label text-white" for="input-username">Hoppie
+                                        Code</label>
+                                    <input class="form-check-input ms-auto" type="checkbox" id="savepwhoppie">
+                                    <input type="text" id="passwordhoppie" class="form-control" placeholder="Hoppie Code">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                        <div class="form-check form-switch ps-0">
-                            <label class="form-control-label text-white" for="input-username">CID</label>
-                            <input class="form-check-input ms-auto" type="checkbox" id="saveuser">
-                            <input type="text" id="username" class="form-control" placeholder="CID">
-                        </div> 
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                        <div class="form-check form-switch ps-0">
-                            <label class="form-control-label text-white" for="input-username">Password</label>
-                            <input class="form-check-input ms-auto" type="checkbox" id="savepw">
-                            <input type="password" id="password" class="form-control" placeholder="Password">
-                        </div> 
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                        <div class="form-check form-switch ps-0">
-                            <label class="form-control-label text-white" for="input-username">Hoppie Code</label>
-                            <input class="form-check-input ms-auto" type="checkbox" id="savepwhoppie">
-                            <input type="text" id="passwordhoppie" class="form-control" placeholder="Hoppie Code">
-                        </div> 
-                    </div>
-                  </div>
-                </div>
-    
-            <!--<div class="tooltip">
+
+                    <!--<div class="tooltip">
                 <br> Password: <input type="password" id="password" />
                 <input type="checkbox" id="savepw" />
                 <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
@@ -132,7 +134,7 @@
                     using a unique and strong password specifically for this
                     account.</span>
             </div>-->
-            <!--<div class="tooltip">
+                    <!--<div class="tooltip">
                 <br>Password Hoppie: <input type="password" id="passwordhoppie" />
                 <input type="checkbox" id="savepwhoppie" />
                 <span class="tooltiptext">Please be aware that the password you enter will be stored in plain
@@ -143,40 +145,41 @@
                     using a unique and strong password specifically for this
                     account.</span>
             </div>-->
-            <br>
-            <button id="savecred">Save your Credentials</button>
-        </form>
-    </div>
+                    <br>
+                    <button id="savecred">Save your Credentials</button>
+            </form>
+            </div>
 
-    <form>
-        If you want Eurosounds, please check the box below and click the download button. <br>
-        <input type="checkbox" id="download-checkbox" onclick="toggleDownloadButton()"> I confirm that I would like to download the file.
-        <br>
-        <button id="download-link" style="display:none" ><a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip">Download</a></button>
-        <!--<a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip" id="download-link" style="display:none" class="text-white">Download</a>-->
-    </form>
-    <script>
-        function toggleDownloadButton() {
-            const downloadLink = document.getElementById("download-link");
-            if (document.getElementById("download-checkbox").checked) {
-                downloadLink.style.display = "block";
-            } else {
-                downloadLink.style.display = "none";
-            }
-        }
-    </script>
-</div>
+            <form>
+                If you want Eurosounds, please check the box below and click the download button. <br>
+                <input type="checkbox" id="download-checkbox" onclick="toggleDownloadButton()"> I confirm that I would like to download the file.
+                <br>
+                <button id="download-link" style="display:none"><a
+                    href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip">Download</a></button>
+                <!--<a href="https://cdn.ganderoceanic.ca/resources/files/eurosounds/eurosounds-8apr20.zip" id="download-link" style="display:none" class="text-white">Download</a>-->
+            </form>
+            <script>
+                function toggleDownloadButton() {
+                    const downloadLink = document.getElementById("download-link");
+                    if (document.getElementById("download-checkbox").checked) {
+                        downloadLink.style.display = "block";
+                    } else {
+                        downloadLink.style.display = "none";
+                    }
+                }
+            </script>
+        </div>
 
 
-    <script src="./html_elements.js"></script>
-    <script src="./renderer.js"></script>
-    <script src="./startup.js"></script>
-    <script src="./save.js"></script>
-    <script src="./getFiles.js"></script>
-    <script src="./data_structure.js"></script>
-    <script src="./download.js"></script>
-    <script src="./git_ops.js"></script>
-    <script src="./append_to_file.js"></script>
+        <script src="./data_structure.js"></script>
+        <script src="./html_elements.js"></script>
+        <script src="./renderer.js"></script>
+        <script src="./startup.js"></script>
+        <script src="./save.js"></script>
+        <script src="./getFiles.js"></script>
+        <script src="./download.js"></script>
+        <script src="./git_ops.js"></script>
+        <script src="./append_to_file.js"></script>
 </body>
 
 </html>
