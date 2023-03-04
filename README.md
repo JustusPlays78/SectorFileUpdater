@@ -34,3 +34,8 @@ Dieses kleine Tool soll GNG Sector Müll beheben. Leider beschäftigt sich jeder
 ## Done:
 * Download
 * Progressbar Download
+
+## Quellen:
+* Midjourney AI: https://www.midjourney.com/
+* OpenAI: ChatGPT: https://chat.openai.com/
+* GitHub Copilot: https://github.com/features/copilot
