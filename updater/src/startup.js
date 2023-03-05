@@ -50,11 +50,11 @@ function updateUI() {
         checkBoxUsername.checked = true;
     }
     if (structure.password.save) {
-        //passwordInput.value = structure.password.pass;
+        passwordInput.value = structure.password.pass;
         checkBoxPassword.checked = true;
     }
     if (structure.passwordhoppie.save) {
-        //passwordhoppieInput.value = structure.passwordhoppie.pass;
+        passwordhoppieInput.value = structure.passwordhoppie.pass;
         checkBoxSavepwhoppie.checked = true;
     }
     dirBox.value = systemstructure.path;
