@@ -1,7 +1,7 @@
 let filesAppended = [];
 
 function searchAndAppendCredentials(dir, data) {
-    var stringToAppend = `\nLastSession	connecttype	0\nLastSession	realname	${data[0]}\nLastSession	certificate	${data[1]}\nLastSession	password	${data[2]}\nLastSession	rating	${data[3]}\nLastSession	server	AMSTERDAM\nLastSession	tovatsim	1\n`;
+    var stringToAppend = `\nLastSession	connecttype	0\nLastSession	realname	${data[0]}\nLastSession	certificate	${data[1]}\nLastSession	password	${data[2]}\nLastSession	rating	${data[3]}\nLastSession	server	AUTOMATIC\nLastSession	tovatsim	1\n`;
     fs.readdir(dir, (err, files) => {
         if (err) throw err;
         files.forEach(file => {
