@@ -40,7 +40,7 @@ function downloadFile(source) {
         .on('finish', function() {
             // Code to extract file
             fs.createReadStream(`${startpath}/${zipFile}`)
-                .pipe(unzipper.Extract({ path: `${startpath}/${region}/${airacversion}_v${releaseversion}` }))
+                .pipe(unzipper.Extract({ path: `${startpath}/${region}/${airacversion}_v${releaseversion}` }))/*Der Packagename fehlt noch*/
                 .on('finish', function() {
                     // console.log("Decompressed successfully.");
                     fs.rename(`${startpath}/${zipFile}`, `${startpath}/zipfiles/${zipFile}`, (err) => {
