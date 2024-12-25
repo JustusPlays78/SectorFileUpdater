@@ -1,0 +1,67 @@
+<section class="container mx-auto p-6 bg-gray-800 shadow-md rounded-lg mt-6">
+  <div class="space-y-6">
+    <div class="flex space-x-4">
+      <div class="w-full">
+        <label for="homeDayDropdown" class="block text-sm font-medium text-gray-300">Day</label>
+        <select id="homeDayDropdown" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600" style="background-color: #2d3748 !important;" onchange="handleDayChange()">
+          <option value="">Choose Day</option>
+        </select>
+      </div>
+
+      <div class="w-full">
+        <label for="homeTypeDropdown" class="block text-sm font-medium text-gray-300">Change Type:</label>
+        <select id="homeTypeDropdown" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600" style="background-color: #2d3748 !important;">
+          <option value="Fix">Fix</option>
+          <option value="Feat">Feat</option>
+          <option value="Sonst">Sonst</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="flex space-x-4">
+      <div class="w-full">
+        <label for="homeTicketTypeDropdown" class="block text-sm font-medium text-gray-300">Ticket:</label>
+        <select id="homeTicketTypeDropdown" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600" style="background-color: #2d3748 !important;">
+          <option value="QA">QA</option>
+          <option value="DEV">DEV</option>
+          <option value="DEV">GD</option>
+        </select>
+      </div>
+      <div class="w-full">
+        <label for="homeTicketNumberInput" class="block text-sm font-medium text-gray-300">Ticketnumber:</label>
+        <input id="homeTicketNumberInput" type="text" maxlength="7" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600" style="background-color: #2d3748 !important;">
+      </div>
+    </div>
+
+
+    <div class="space-y-6">
+      <div>
+        <label for="homeTicketDescriptionInput" class="block text-sm font-medium text-gray-300">Description:</label>
+        <input id="homeTicketDescriptionInput" type="text" class="mt-1 block w-full p-2 border border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600" style="background-color: #2d3748 !important;">
+      </div>
+    </div>
+
+
+    <div class="text-right">
+      <button id="homeDayChangeAddButton" class="bg-blue-600 text-white px-4 py-2 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600">
+        Add
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="container mx-auto p-6 bg-gray-800 shadow-md rounded-lg mt-6">
+  <h3 class="text-xl font-bold">Day</h3>
+  <table class="w-full table-auto border-collapse">
+    <thead class="bg-gray-700">
+    <tr>
+      <th class="px-4 py-2 border border-gray-600 text-left text-gray-200">Type</th>
+      <th class="px-4 py-2 border border-gray-600 text-left text-gray-200">Ticket</th>
+      <th class="px-4 py-2 border border-gray-600 text-left text-gray-200">Desciption</th>
+    </tr>
+    </thead>
+    <tbody id="homeDay">
+    </tbody>
+  </table>
+</section>

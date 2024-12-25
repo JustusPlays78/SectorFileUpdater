@@ -5,15 +5,14 @@
     "description": "This application allows users to easily update and maintain their sector files. It offers a simple, intuitive interface for downloading and installing the latest version of sector files, ensuring that users have access to the most accurate and up-to-date data. With automatic update checks and notifications, users can rest assured that their sector files are always up-to-date and ready for use.",
     "main": "src/index.js",
     "scripts": {
-        "start": "electron-forge start",
+        "dev": "electron-forge start",
         "package": "electron-forge package",
         "make": "electron-forge make --platform=win32",
-        "publish": "electron-forge publish",
-        "lint": "echo \"No linting configured\""
+        "publish": "electron-forge publish"
     },
     "keywords": [],
     "authors": [
-        "Julian <JustusPlays78@gmail.com>",
+        "Julian <info@julscha.de>",
         "Paul <paul@pabr.de>"
     ],
     "license": "MIT",
@@ -62,6 +61,9 @@
         "@electron-forge/maker-rpm": "^6.0.0-beta.66",
         "@electron-forge/maker-squirrel": "^6.0.0-beta.66",
         "@electron-forge/maker-zip": "^6.0.0-beta.66",
-        "electron": "^33.2.1"
+        "autoprefixer": "^10.4.20",
+        "electron": "^33.2.1",
+        "postcss": "^8.4.49",
+        "tailwindcss": "^3.4.17"
     }
 }

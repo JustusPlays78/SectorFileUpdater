@@ -22,6 +22,10 @@ let applyHoppie = document.getElementById('applyHoppie');
 let dropDownGNG = document.getElementById('gng');
 let dropDownFiles = document.getElementById('files');
 
+const homeDiv = document.getElementById('homeDiv');
+const pushDiv = document.getElementById('pushDiv');
+const settingsDiv = document.getElementById('settingsDiv');
+
 saveCredBtn.addEventListener('click', (e) => {
     save();
 });

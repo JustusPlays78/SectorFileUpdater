@@ -13,17 +13,17 @@ const createWindow = () => {
     const mainWindow = new BrowserWindow({
         width: 1000,
         height: 800,
-        webPreferences: {
+        /*webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             nodeIntegrationInWorker: true,
             preload: path.join(__dirname, 'preload.js'),
-        },
+        },*/
     });
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
-    //mainWindow.webContents.openDevTools();
+    mainWindow.loadFile(path.join(__dirname, 'index1.html'));
+    mainWindow.webContents.openDevTools();
     // Select Directory
-    ipcMain.on('app-path', async(event, arg) => {
+    /*ipcMain.on('app-path', async(event, arg) => {
         filepath = await dialog.showOpenDialog(mainWindow, {
             properties: ['openDirectory']
         });
@@ -35,7 +35,7 @@ const createWindow = () => {
     });
     ipcMain.on("app-path-get", (event) => {
         mainWindow.webContents.send("app-path-get", app.getAppPath());
-    });
+    });*/
 };
 
 
