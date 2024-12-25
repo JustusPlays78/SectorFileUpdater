@@ -6,10 +6,7 @@ document.querySelector('.loopple-alert.loopple-alert-dismissible .close').onclic
     }, 1000);}
 
     document.getElementById('download').addEventListener('click', () => {
-
-    },
-    
-    );
+    });
   
 
 

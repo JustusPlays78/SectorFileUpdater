@@ -14,12 +14,6 @@
         </h1>
     </div>
 </head>
-<script>
-    $(function () {
-    $("#header").load("./header.html");
-    $("#footer").load("./footer.html");
-    });
-</script>
 
 
 <body class="ecsu-bg-dark-out text-white">
@@ -27,7 +21,7 @@
 
     <div>
         <h3 class="text-white">Settings</h3>
-        <button id="select-dir">Select Directory</button>
+        <button id="settingsProfileDirselectbutton">Select Directory</button>
         <input type="text" id="dirBox" name="name" size="50" readonly />
         <progress id="progressbar" max="100" value="0"></progress>
         <p id="progressbarText"></p>
@@ -175,15 +169,16 @@
         </div>
 
 
-        <script src="./data_structure.js"></script>
-        <script src="./html_elements.js"></script>
-        <script src="./renderer.js"></script>
-        <script src="./startup.js"></script>
-        <script src="./save.js"></script>
-        <script src="./getFiles.js"></script>
-        <script src="./download.js"></script>
-        <script src="./git_ops.js"></script>
-        <script src="./append_to_file.js"></script>
+        <script src="components/js/data_structure.js"></script>
+        <script src="components/js/html_elements.js"></script>
+        <script src="renderer.js"></script>
+        <script src="components/js/startup.js"></script>
+        <script src="components/js/save.js"></script>
+        <script src="components/js/getFiles.js"></script>
+        <script src="components/js/download.js"></script>
+        <script src="components/js/git_ops.js"></script>
+        <script src="components/js/append_to_file.js"></script>
+    </div>
 </body>
 
 </html>

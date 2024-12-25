@@ -26,7 +26,7 @@ function removeFileItems() {
     }
 }
 
-function changeUserpath() {
+export function changeUserpath() {
     ipcRenderer.send('app-path');
 }
 

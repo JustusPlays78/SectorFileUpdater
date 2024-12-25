@@ -1,5 +1,5 @@
 // Global Variabels
-let selectDirBtn = document.getElementById('select-dir');
+let settingsProfileDirselectbutton = document.getElementById('settingsProfileDirselectbutton');
 let dirBox = document.getElementById('dirBox');
 let usernameInput = document.getElementById('username');
 let passwordInput = document.getElementById('password');
@@ -30,6 +30,6 @@ saveCredBtn.addEventListener('click', (e) => {
     save();
 });
 
-selectDirBtn.addEventListener('click', (e) => {
+settingsProfileDirselectbutton.addEventListener('click', (e) => {
     changeUserpath();
 });
