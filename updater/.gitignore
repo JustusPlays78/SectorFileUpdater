@@ -2,6 +2,7 @@
 systemfile.json
 settings.json
 
+.idea/
 # Logs
 logs
 *.log

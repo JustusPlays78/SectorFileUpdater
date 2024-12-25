@@ -16,6 +16,12 @@
         </h1>
     </div>
 </head>
+<script>
+    $(function () {
+    $("#header").load("./header.html");
+    $("#footer").load("./footer.html");
+    });
+</script>
 
 
 <body class="ecsu-bg-dark-out text-white">
@@ -117,7 +123,7 @@
                                     <label class="form-control-label text-white" for="input-username">Hoppie
                                         Code</label>
                                     <input class="form-check-input ms-auto" type="checkbox" id="savepwhoppie">
-                                    <input type="text" id="passwordhoppie" class="form-control" placeholder="Hoppie Code">
+                                    <input type="password" id="passwordhoppie" class="form-control" placeholder="Hoppie Code">
                                 </div>
                             </div>
                         </div>
@@ -147,8 +153,8 @@
             </div>-->
                     <br>
                     <button id="savecred">Save your Credentials</button>
+                </div>
             </form>
-            </div>
 
             <form>
                 If you want Eurosounds, please check the box below and click the download button. <br>
